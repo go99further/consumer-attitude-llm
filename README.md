@@ -16,7 +16,7 @@
 
 $$\text{ATT} = \sum_{i=1}^{n} b_i \times e_i$$
 
-其中 $b_i$ 为信念强度（0.4–1.0，LLM 评估），$e_i$ 为评价方向（−1 / 0 / +1），ATT 为整体态度指数。
+其中 `b_i` 为信念强度（0.4–1.0，LLM 评估），`e_i` 为评价方向（−1 / 0 / +1），ATT 为整体态度指数。
 
 研究以 Burt's Bees 护手霜礼盒（ASIN：B004EDYQX6）的 **1,331 条亚马逊评论** 为样本，通过四个假设系统检验 LLM 抽取态度的 **预测效度**。
 
@@ -163,6 +163,28 @@ $$\text{ATT} = \sum_{i=1}^{n} b_i \times e_i$$
 
 ---
 
+---
+
+## 研究复现
+
+```bash
+# 1. 配置 API
+cp code/config.py.template code/config.py
+# 编辑 code/config.py，填入你的 LLM API key
+
+# 2. 安装依赖
+pip install -r requirements.txt
+
+# 3. 变量抽取（调用 LLM API，耗时较长）
+python code/variable_extraction.py
+
+# 4. 统计分析
+python code/study1_analysis.py    # H1, H2
+python code/study2_analysis.py    # H3, H4
+```
+
+分析所用数据为 Burt's Bees 护手霜礼盒（ASIN：`B004EDYQX6`）在 [Amazon Reviews 2023](https://amazon-reviews-2023.github.io/)（McAuley Lab）中的 1,331 条评论。处理后的 CSV 位于 `data/`，原始 JSONL 因体积过大未上传。
+
 ## 论文全文（49 页）
 
 下方按顺序展示完整论文，无需点击或下载即可直接阅读。
@@ -264,28 +286,6 @@ $$\text{ATT} = \sum_{i=1}^{n} b_i \times e_i$$
 ![第 48 页](https://go99further.github.io/consumer-attitude-llm/thesis_pdf/preview_pages/page_48.png)
 
 ![第 49 页](https://go99further.github.io/consumer-attitude-llm/thesis_pdf/preview_pages/page_49.png)
-
----
-
-## 研究复现
-
-```bash
-# 1. 配置 API
-cp code/config.py.template code/config.py
-# 编辑 code/config.py，填入你的 LLM API key
-
-# 2. 安装依赖
-pip install -r requirements.txt
-
-# 3. 变量抽取（调用 LLM API，耗时较长）
-python code/variable_extraction.py
-
-# 4. 统计分析
-python code/study1_analysis.py    # H1, H2
-python code/study2_analysis.py    # H3, H4
-```
-
-分析所用数据为 Burt's Bees 护手霜礼盒（ASIN：`B004EDYQX6`）在 [Amazon Reviews 2023](https://amazon-reviews-2023.github.io/)（McAuley Lab）中的 1,331 条评论。处理后的 CSV 位于 `data/`，原始 JSONL 因体积过大未上传。
 
 ---
 
