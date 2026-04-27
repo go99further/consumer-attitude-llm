@@ -21,6 +21,7 @@
 *.pdf
 !latex_new/figures/*.pdf
 !arxiv/figures/*.pdf
+!thesis_pdf/*.pdf
 
 # ─── Large data files (>1MB) ────────────────────────────────
 Beauty_and_Personal_Care.jsonl

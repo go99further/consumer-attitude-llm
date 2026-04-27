@@ -1,36 +1,117 @@
 # Predictive Validity of Consumer Multi-Attribute Attitude from Online Reviews
 
-> Undergraduate thesis, Dalian University of Technology (DUT), 2026.
+<div align="center">
 
-This repository contains the LaTeX source and analysis code for an undergraduate
-thesis applying Large Language Models (LLMs) to extract consumer multi-attribute
-attitudes from Amazon product reviews, grounded in Fishbein's Multi-Attribute
-Attitude Theory: **ATT = Σ (b_i × e_i)**.
+**Undergraduate Thesis, Dalian University of Technology (DUT), 2026**
 
-## Overview
+[![PDF](https://img.shields.io/badge/PDF-Download-red?logo=adobe)](thesis_pdf/thesis_redacted.pdf)
+[![LaTeX](https://img.shields.io/badge/LaTeX-Source-green?logo=latex)](latex_new/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-The study validates the predictive validity of LLM-extracted attitudes through
-four hypotheses:
+</div>
 
-| H | Statement | Result | Key Statistic |
+---
+
+## 📄 Full Thesis PDF
+
+**[📥 Download Thesis (PDF, 49 pages, 911KB)](thesis_pdf/thesis_redacted.pdf)**
+
+*Note: Personal information (author, advisor, student ID, college, major, acknowledgments) has been redacted in this public version.*
+
+---
+
+## 🎯 Research Overview
+
+This thesis applies **Large Language Models (LLMs)** to extract consumer **multi-attribute attitudes** from Amazon product reviews, grounded in **Fishbein's Multi-Attribute Attitude Theory**:
+
+$$
+\text{ATT} = \sum_{i=1}^{n} b_i \times e_i
+$$
+
+where:
+- **b_i** = belief strength (0.4–1.0, LLM-assessed)
+- **e_i** = evaluative aspect (−1 / 0 / +1, sentiment polarity)
+- **ATT** = overall attitude index
+
+The study validates the **predictive validity** of LLM-extracted attitudes through four hypotheses tested on **1,331 Amazon reviews** of Burt's Bees Hand Cream Gift Set (ASIN: B004EDYQX6).
+
+---
+
+## 🔬 Research Framework
+
+<div align="center">
+<img src="latex_new/figures/fig5_1_framework.png" width="700" alt="Research Framework">
+</div>
+
+**Key Design Feature: Three Independent Data Sources**
+
+| Data Source | Variable | Origin | Purpose |
 |---|---|---|---|
-| H1 | ATT predicts Rating | Supported | β = 1.867, p < 0.001, R² = 0.560 |
-| H2 | Reviewer Experience moderates ATT–Rating | Supported (exploratory) | β = −0.008, p = 0.001 |
-| H3 | ATT predicts Behavioral Intention (BI) | Supported | β = 0.167, p = 0.004 |
-| H4 | ATT shows incremental validity beyond Rating | Supported | ΔR² = 0.018, p = 0.004 |
+| 🤖 **Source 1** | ATT (Multi-Attribute Attitude) | LLM text extraction | Core predictor |
+| ⭐ **Source 2** | Rating (1–5 stars) | Platform structured data | External criterion (H1) |
+| 📊 **Source 3** | Reviewer Experience | Cross-category behavioral data | Moderator (H2) |
 
-A central methodological contribution is the **three-data-source design**
-(LLM text extraction / platform structured ratings / cross-category behavioral
-data) that eliminates Common Method Variance (CMV) at its root for H1 and H2.
-Section 8.5.1 of the thesis further documents two failed attempts to construct
-an external behavioral proxy for BI, demonstrating the irreplaceability of the
-three-source design.
+This design **eliminates Common Method Variance (CMV)** at its root for H1 and H2 by ensuring ATT, Rating, and Reviewer Experience originate from completely independent sources.
 
-## Repository Layout
+---
+
+## 📊 Key Findings
+
+### Hypothesis Testing Results
+
+| Hypothesis | Statement | Result | Key Statistic |
+|:---:|---|:---:|---|
+| **H1** | ATT predicts Rating | ✅ **Supported** | β = 1.867, *p* < 0.001, *R*² = 0.560 |
+| **H2** | Reviewer Experience moderates ATT–Rating | ✅ **Supported** | β = −0.008, *p* = 0.001 |
+| **H3** | ATT predicts Behavioral Intention (BI) | ✅ **Supported** | β = 0.167, *p* = 0.004 |
+| **H4** | ATT shows incremental validity beyond Rating | ✅ **Supported** | Δ*R*² = 0.018, *p* = 0.004 |
+
+### H2: Moderation Effect (Simple Slopes Analysis)
+
+<div align="center">
+<img src="latex_new/figures/fig7_2_moderation.png" width="600" alt="Moderation Effect">
+</div>
+
+**Finding**: Low-experience reviewers show **stronger ATT–Rating consistency** (slope = 0.741) than high-experience reviewers (slope = 0.573). The interaction term is significant (β = −0.008, *p* = 0.001), suggesting experienced reviewers rely less on multi-attribute decomposition when forming overall ratings.
+
+### H4: Incremental Validity
+
+<div align="center">
+<img src="latex_new/figures/fig7_3_incremental.png" width="700" alt="Incremental Validity">
+</div>
+
+**Finding**: After controlling for Rating, ATT still contributes **Δ*R*² = 0.018** (*F* = 8.32, *p* = 0.004) to predicting Behavioral Intention. This demonstrates that multi-attribute decomposition captures information **beyond** simple summary ratings.
+
+---
+
+## 🛠️ Methodology Highlights
+
+### LLM-Based Variable Extraction
+
+- **Model**: DeepSeek-V3.2 via API
+- **Extraction Accuracy**: 100% (1,087/1,087 valid ATT values)
+- **Hallucination Rate**: 4.2% (9/214 sampled beliefs)
+- **Test-Retest Reliability**: *r* = 0.892 (DeepSeek vs. qwen-plus)
+- **Evaluative Aspect Consistency**: 97.2% (105/108 beliefs)
+
+### Methodological Contribution: Failed Attempts to Eliminate CMV
+
+Section 8.5.1 of the thesis documents two **failed attempts** to construct an external behavioral proxy for BI:
+
+1. **Repeat Purchase Behavior**: Only 7 users (1.1%) left multiple reviews for the same product — insufficient sample size.
+2. **Helpful Vote Proxy**: 89% of reviews received zero helpful votes (extreme zero-inflation), and helpful votes measure *information quality*, not reviewer intention (construct mismatch).
+
+These failures **反证** (prove by contradiction) the **irreplaceability** of the three-data-source design.
+
+---
+
+## 📁 Repository Structure
 
 ```
 .
-├── latex_new/                 # Thesis LaTeX source (Chinese, ctexart)
+├── thesis_pdf/
+│   └── thesis_redacted.pdf    # 📥 Full thesis (49 pages, redacted)
+├── latex_new/                 # LaTeX source (Chinese, ctexart)
 │   ├── main.tex
 │   ├── preamble.tex
 │   ├── build.bat              # Windows build script (xelatex + biber)
@@ -39,31 +120,30 @@ three-source design.
 │   ├── figures/               # PNG figures and TikZ source
 │   └── code/                  # Figure-generation Python scripts
 ├── code/                      # Analysis pipeline
-│   ├── config.py.template     # API config template (copy to config.py)
-│   ├── variable_extraction.py # LLM-based ATT/BI/PV extraction
-│   ├── compute_reviewer_experience.py
-│   ├── llm_reliability_check.py
-│   ├── run_retest_reliability.py
+│   ├── config.py.template     # API config template
+│   ├── variable_extraction.py # LLM-based ATT/BI extraction
 │   ├── study1_analysis.py     # H1/H2 (N = 1,157)
 │   ├── study2_analysis.py     # H3/H4 (N = 298)
 │   └── ...
-├── data/                      # Processed datasets (CSV)
-│   ├── cleaned_reviews.csv
-│   ├── final_analysis_data_complete.csv
-│   ├── reviewer_experience.csv
-│   └── ...
+├── data/                      # Processed datasets (CSV, ~1.3MB total)
 ├── requirements.txt
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
-## Building the Thesis
+---
 
-### Prerequisites
-- TeX Live 2024+ or MiKTeX with **XeLaTeX** and **Biber**
-- Chinese fonts: SimSun, SimHei, KaiTi, FangSong, STXihei (Windows built-in)
+## 🚀 Quick Start
 
-### Compile
+### View the Thesis
+
+**[📥 Download PDF](thesis_pdf/thesis_redacted.pdf)** — Read the full thesis directly.
+
+### Build from Source
+
+**Prerequisites**: TeX Live 2024+ or MiKTeX with XeLaTeX and Biber, Chinese fonts (SimSun, SimHei, KaiTi, FangSong, STXihei).
+
 ```bash
 cd latex_new
 xelatex -interaction=nonstopmode main.tex
@@ -72,14 +152,14 @@ xelatex -interaction=nonstopmode main.tex
 xelatex -interaction=nonstopmode main.tex
 ```
 
-On Windows you can also run `build.bat`.
+Or run `build.bat` on Windows.
 
-## Running the Analysis
+### Run the Analysis
 
 ```bash
 # 1. Set up API access
 cp code/config.py.template code/config.py
-# Edit code/config.py and insert your own LLM API key
+# Edit code/config.py and insert your LLM API key
 
 # 2. Install dependencies
 pip install -r requirements.txt
@@ -90,37 +170,54 @@ python code/variable_extraction.py
 # 4. Statistical analysis
 python code/study1_analysis.py    # H1, H2
 python code/study2_analysis.py    # H3, H4
-
-# 5. Reliability checks
-python code/llm_reliability_check.py
-python code/run_retest_reliability.py
 ```
 
-## Data
+---
 
-The analysis is based on **1,331 reviews** of Burt's Bees Hand Cream Gift Set
-(ASIN: `B004EDYQX6`) from Amazon Reviews 2023 (McAuley Lab). Raw review JSONL
-files are excluded from this repository due to size; processed CSV datasets
-sufficient to reproduce all reported analyses are provided in `data/`.
+## 📊 Data
 
-**Reviewer Experience** is derived from the full Amazon Beauty & Personal Care
-category (≈ 23.9M reviews) by counting each reviewer's category-level history.
-The full source dataset is publicly available from the McAuley Lab; this repo
-contains only the per-reviewer aggregated values used in the analysis.
+The analysis is based on **1,331 reviews** of Burt's Bees Hand Cream Gift Set (ASIN: `B004EDYQX6`) from the **Amazon Reviews 2023** dataset (McAuley Lab).
 
-## Privacy Note
+- **Raw review JSONL files** are excluded from this repository due to size (480KB).
+- **Processed CSV datasets** sufficient to reproduce all reported analyses are provided in `data/`.
+- **Reviewer Experience** is derived from the full Amazon Beauty & Personal Care category (≈ 23.9M reviews) by counting each reviewer's category-level history.
 
-This is a redacted public version of the thesis. Author name, advisor name,
-student ID, college, major, and acknowledgments have been removed. The
-research content, methodology, results, and figures are unchanged.
+The full source dataset is publicly available from the [McAuley Lab](https://amazon-reviews-2023.github.io/).
 
-## Citation
+---
 
-If you find the methodology useful, please cite the corresponding arXiv
-preprint (forthcoming) rather than this thesis directly.
+## 🔐 Privacy Note
 
-## License
+This is a **redacted public version** of the thesis. The following information has been removed:
 
-Released under the MIT License for the source code; the thesis text itself
-is provided under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-for academic reference.
+- Author name
+- Advisor name
+- Student ID
+- College and major
+- Acknowledgments
+
+The research content, methodology, results, and figures are **unchanged**.
+
+---
+
+## 📚 Citation
+
+If you find the methodology useful, please cite the corresponding arXiv preprint (forthcoming) rather than this thesis directly.
+
+---
+
+## 📜 License
+
+- **Source code**: [MIT License](LICENSE)
+- **Thesis text**: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) for academic reference
+
+---
+
+## 🙏 Acknowledgments
+
+This research was conducted at **Dalian University of Technology (DUT)** as an undergraduate thesis project in 2026.
+
+Special thanks to the open-source community for tools and datasets that made this research possible:
+- [Amazon Reviews 2023](https://amazon-reviews-2023.github.io/) (McAuley Lab)
+- [DeepSeek](https://www.deepseek.com/) for LLM API access
+- LaTeX, Python, and the scientific computing ecosystem
