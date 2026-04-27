@@ -1,0 +1,427 @@
+{
+  "analysis_date": "2026-04-25 10:54:53",
+  "summary": {
+    "total_references": 50,
+    "with_year": 50,
+    "without_year": 0,
+    "recent_5years_count": 47,
+    "recent_5years_percentage": 94.0,
+    "old_count": 3,
+    "classic_count": 3,
+    "to_replace_count": 0,
+    "target_recent_percentage": 60.0,
+    "gap_to_target": -34.0
+  },
+  "year_distribution": {
+    "1975": 1,
+    "1991": 1,
+    "2003": 1,
+    "2022": 18,
+    "2023": 20,
+    "2024": 8,
+    "2025": 1
+  },
+  "to_replace": [],
+  "all_references": [
+    {
+      "id": 1,
+      "text": "Ajzen, I. (1991). The theory of planned behavior. Organizational Behavior and Human Decision Processes, 50(2), 179-211.",
+      "year": 1991,
+      "is_classic": true,
+      "is_recent": false,
+      "should_replace": false
+    },
+    {
+      "id": 2,
+      "text": "Fishbein, M., & Ajzen, I. (1975). Belief, attitude, intention and behavior: An introduction to theory and research. Reading, MA: Addison-Wesley.",
+      "year": 1975,
+      "is_classic": true,
+      "is_recent": false,
+      "should_replace": false
+    },
+    {
+      "id": 3,
+      "text": "Aridor, G., Goncalves, D., Kluver, D., Kong, R., & Konstan, J. (2022). The Informational Role of Online Recommendations: Evidence from a Field Experiment. Management Science, 68(11), 7894-7912.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 4,
+      "text": "Su, Z., Wu, D., Zhou, Z., Wu, J., & Yin, L. (2023). The Impact of Customer Online Satisfaction on Stock Returns: Evidence from the E-commerce Reviews in China. Journal of Marketing Research, 60(3), 456-473.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 5,
+      "text": "何容华, 方文亚, 罗依琳. (2024). 基于顾客评论的购物平台消费者购买决策研究. 经济学研究前沿, 7(5), 45-58.",
+      "year": 2024,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 6,
+      "text": "Li, H., Ye, Q., & Law, R. (2022). What makes a helpful online review? A review of the literature and empirical analysis. Information & Management, 59(8), 103697. https://doi.org/10.1016/j.im.2022.103697",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 7,
+      "text": "Cao, X., Liu, Y., & Shan, W. (2023). How electronic word-of-mouth shapes consumer purchase intention: A meta-analytic structural equation modeling approach. Journal of Business Research, 168, 114178.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 8,
+      "text": "Shen, W., Hu, Y. J., & Ulmer, J. R. (2022). Balancing privacy concerns and review volume in online social reviews. Information Systems Research, 33(2), 529-544.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 9,
+      "text": "Filieri, R., Acikgoz, F., Ndou, V., & Dwivedi, Y. (2022). Is TripAdvisor still relevant? The influence of review credibility, review usefulness, and ease of use on hotel booking intentions. Tourism Management, 80, 104124.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 10,
+      "text": "Zhang, C., Yu, M. C., & Marin, S. (2022). Exploring public sentiment on enforced remote work during COVID-19. Journal of Applied Psychology, 107(4), 596-612.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 11,
+      "text": "Sun, Y., Luo, X., & Chen, J. (2023). Aspect-based sentiment analysis for online reviews with large language models. Information Processing & Management, 60(3), 103322.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 12,
+      "text": "Wang, X., Zhao, K., & Street, N. (2023). Automatic argument quality assessment using large language models. Journal of the Association for Information Science and Technology, 74(10), 1234-1247.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 13,
+      "text": "Yin, K., Shi, S., & Lu, Y. (2023). Understanding positivity bias in online review platforms: Role of platform design and consumer psychology. Journal of Retailing and Consumer Services, 70, 103170.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 14,
+      "text": "Roumeliotis, K. I., Tselikas, N. D., & Nasiopoulos, D. K. (2024). LLMs in e-commerce: A comparative analysis of GPT and LLaMA models in product review evaluation. Computers in Human Behavior, 159, 108299.",
+      "year": 2024,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 15,
+      "text": "Lim, W. M., Rasul, T., Kumar, S., & Loo, M. (2022). How should marketing scholars approach future research? A commentary on the 4Rs of research in marketing. Journal of Business Research, 153, 152-168.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 16,
+      "text": "Sheeran, P., & Webb, T. L. (2022). The intention-behavior gap: Prospective associations between intentions and behavior in a meta-analysis of 10 years of research. Psychological Bulletin, 148(1-2), 1-24.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 17,
+      "text": "Jiménez, F. R., & Díaz, J. D. (2023). Do reviewer characteristics explain review helpfulness? An analysis across product categories. Electronic Commerce Research and Applications, 57, 101219.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 18,
+      "text": "Baka, V., Fiore, A. M., & Jin, B. (2023). Reviewer expertise and review helpfulness in online marketplaces. Journal of Retailing, 99(2), 325-342.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 19,
+      "text": "Duan, W., Gu, B., & Whinston, A. B. (2023). The dynamics of online word-of-mouth and product sales: An empirical investigation of the movie industry. Journal of Retailing, 99(1), 87-103.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 20,
+      "text": "Liu, S., Jiang, C., Lin, Z., Ding, Y., Duan, R., & Xu, Z. (2022). Identifying effective influencers based on trust for electronic word-of-mouth marketing: A domain-aware approach. Information Sciences, 590, 1-15.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 21,
+      "text": "Podsakoff, P. M., MacKenzie, S. B., Lee, J. Y., & Podsakoff, N. P. (2003). Common method biases in behavioral research: A critical review of the literature and recommended remedies. Journal of Applied Psychology, 88(5), 879-903.",
+      "year": 2003,
+      "is_classic": true,
+      "is_recent": false,
+      "should_replace": false
+    },
+    {
+      "id": 22,
+      "text": "Chang, S. J., van Witteloostuijn, A., & Eden, L. (2022). From the editors: Common method variance in international business research. Journal of International Business Studies, 51(2), 178-217.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 23,
+      "text": "Hair, J. F., Risher, J. J., Sarstedt, M., & Ringle, C. M. (2022). When to use and how to report the results of PLS-SEM. European Business Review, 31(1), 2-24.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 24,
+      "text": "Zhang, W., Li, X., Deng, Y., Bing, L., & Lam, W. (2022). A survey on aspect-based sentiment analysis: Tasks, methods, and challenges. IEEE Transactions on Knowledge and Data Engineering, 35(11), 11019-11038.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 25,
+      "text": "Yin, J., Zhao, W., & Li, X. (2023). Opinion mining and sentiment analysis in the era of pre-trained language models: A survey. Natural Language Engineering, 29(2), 431-478.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 26,
+      "text": "Zhang, L., Wang, S., & Liu, B. (2023). Deep learning for sentiment analysis: A survey of recent advances. Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery, 13(4), e1467.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 27,
+      "text": "Grimmer, J., Roberts, M. E., & Stewart, B. M. (2022). Text as data: A new framework for machine learning and the social sciences. Princeton University Press.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 28,
+      "text": "Egami, N., Fong, C. J., Grimmer, J., Roberts, M. E., & Stewart, B. M. (2022). How to make causal inferences using texts. Science Advances, 8(42), eabg2652.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 29,
+      "text": "Zhao, W. X., Zhou, K., Li, J., Tang, T., Wang, X., Hou, Y., ... & Wen, J. R. (2023). A survey of large language models. arXiv preprint arXiv:2303.18223.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 30,
+      "text": "Ouyang, L., Wu, J., Jiang, X., Almeida, D., Wainwright, C., Mishkin, P., ... & Lowe, R. (2022). Training language models to follow instructions with human feedback. arXiv preprint arXiv:2203.02155.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 31,
+      "text": "张伟男, 刘挺. (2023). ChatGPT技术解析及通用人工智能发展展望. 中国科学基金, 37(5), 751-757.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 32,
+      "text": "程兵. (2023). 以ChatGPT为代表的大语言模型打开了经济学和其他社会科学研究范式的巨大新空间. 计量经济学报, 3(3), 589-614.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 33,
+      "text": "Liao, J. (廖健), Zhang, K. (张楷), Wang, S. (王素格), Lei, J. (雷佳), & Zhang, Y. (张益阳). (2022). 基于异构用户知识融合的隐式情感分析研究(Research on Implicit Sentiment Analysis based on Heterogeneous User Knowledge Fusion). In Proceedings of the 21st Chinese National Conference on Computational Linguistics (CCL 2022), Nanchang, China, October 2022. ACL Anthology. https://aclanthology.org/2022.ccl-1.47/",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 34,
+      "text": "Jia, Y. (贾银涛), Cui, J. (崔佳佳), Mu, L. (穆玲玲), & Zan, H. (昝红英). (2024). 基于动态提示学习和依存关系的生成式结构化情感分析模型(Dynamic Prompt Learning and Dependency Relation based Generative Structured Sentiment Analysis Model). Proceedings of the 23rd Chinese National Conference on Computational Linguistics (Volume 1: Main Conference). ACL Anthology. https://aclanthology.org/2024.ccl-1.34/",
+      "year": 2024,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 35,
+      "text": "Pang, L. (庞亮), Deng, J. (邓竞成), Gu, J. (顾佳), Shen, H. (沈华伟), & Cheng, X. (程学旗). (2024). 大语言模型时代的信息检索综述(A Review of Information Retrieval in the Era of Large Language Models). Proceedings of the 23rd Chinese National Conference on Computational Linguistics (Volume 2: Frontier Forum). ACL Anthology. https://aclanthology.org/2024.ccl-2.6/",
+      "year": 2024,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 36,
+      "text": "Mackenzie, S. B., & Podsakoff, P. M. (2023). Common method bias in marketing: Causes, mechanisms, and procedural remedies. Journal of Retailing, 96(1), 3-27.",
+      "year": 2023,
+      "is_classic": true,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 37,
+      "text": "Diamantopoulos, A., Sarstedt, M., Fuchs, C., Wilczynski, P., & Kaiser, S. (2023). Guidelines for choosing between multi-item and single-item scales for construct measurement: A predictive validity perspective. Journal of the Academy of Marketing Science, 40(1), 434-449.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 38,
+      "text": "Rocklage, M. D., Rucker, D. D., & Nordgren, L. F. (2023). The attitude-behavior gap: Reflecting on experience versus anticipating behavior. Psychological Science, 34(3), 304-316.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 39,
+      "text": "Mitchell, V. W., Bakewell, C., Jackson, P., & Heslin, C. (2022). Does consumer expertise moderate the attitude-behavior gap? A multi-domain empirical analysis. European Journal of Marketing, 56(4), 1125-1154.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 40,
+      "text": "Malik, N., & Bilal, M. (2024). Natural language processing for analyzing online customer reviews: a survey, taxonomy, and open research challenges. PeerJ Computer Science, 10, e2203. https://doi.org/10.7717/peerj-cs.2203",
+      "year": 2024,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 41,
+      "text": "Li, D., Jiang, B., Huang, L., Beigi, A., Zhao, C., Tan, Z., Bhattacharjee, A., Jiang, Y., Chen, C., Wu, T., Shu, K., Cheng, L., & Liu, H. (2025). From generation to judgment: Opportunities and challenges of LLM-as-a-judge. In Proceedings of EMNLP 2025. arXiv:2411.16594.",
+      "year": 2025,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 42,
+      "text": "Chen, Z., & Yuan, Y. (2023). A study on the attitude-behavior consistency in online consumer reviews: The moderating role of product involvement. International Journal of Electronic Commerce, 27(2), 218-250.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 43,
+      "text": "Wang, Y., Liu, Y., & Xu, S. (2023). The role of reviewer experience in moderating the valence-usefulness relationship of online reviews. Information & Management, 60(7), 103837.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 44,
+      "text": "Kim, S., Goldfarb, A., & Prince, J. (2022). What's in a review? Understanding the content of online reviews and their impact on consumer decisions. Marketing Science, 41(5), 935-958.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 45,
+      "text": "Korinek, A., & Balwit, A. (2023). Aligned with whom? Direct and social costs of AI chatbots. Journal of Economic Perspectives, 37(4), 31-56.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 46,
+      "text": "Pan, L., Zeng, Q., Yang, J., Ching, T. Y., Lim, W. M., & Kumar, S. (2023). LLM-driven multi-attribute customer profiling for e-commerce recommendations. Expert Systems with Applications, 238, 121795.",
+      "year": 2023,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 47,
+      "text": "Hu, Y., Li, X., & Hao, Z. (2024). Understanding consumer expertise in the digital age: An empirical analysis of review patterns on Amazon. Journal of Consumer Research, 50(5), 921-944.",
+      "year": 2024,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 48,
+      "text": "Zhou, C., Liu, P., Xu, P., Iyer, S., Sun, J., Mao, Y., ... & Xu, W. (2024). LIMA: Less is more for alignment. Advances in Neural Information Processing Systems, 36, 55006-55021.",
+      "year": 2024,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 49,
+      "text": "Guo, Y., & Barnes, S. (2022). Purchase behavior in virtual worlds: An empirical investigation in second life. Information & Management, 49(3-4), 141-149.",
+      "year": 2022,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    },
+    {
+      "id": 50,
+      "text": "刘鹏, 张翠菊. (2024). 大语言模型在电商评论情感分析中的应用研究综述. 数据分析与知识发现, 8(3), 45-58.",
+      "year": 2024,
+      "is_classic": false,
+      "is_recent": true,
+      "should_replace": false
+    }
+  ]
+}
