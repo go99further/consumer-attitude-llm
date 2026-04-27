@@ -1,0 +1,112 @@
+# ─── LaTeX build artifacts ──────────────────────────────────
+*.aux
+*.log
+*.bbl
+*.bcf
+*.blg
+*.out
+*.toc
+*.run.xml
+*.synctex.gz
+*.synctex(busy)
+*.fls
+*.fdb_latexmk
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+
+# ─── Compiled PDFs (rebuild from source) ────────────────────
+*.pdf
+!latex_new/figures/*.pdf
+!arxiv/figures/*.pdf
+
+# ─── Large data files (>1MB) ────────────────────────────────
+Beauty_and_Personal_Care.jsonl
+meta_Beauty_and_Personal_Care.jsonl
+data/reviews_B004EDYQX6.jsonl
+
+# ─── Secrets ────────────────────────────────────────────────
+code/config.py
+**/api_key*.txt
+
+# ─── Python ─────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# ─── Temp/scratch scripts at repo root ──────────────────────
+temp_check*.py
+field_check.py
+repeat_check.py
+revlon_check.py
+helpful_check.py
+pv_check.py
+count_asins.py
+scan_meta.py
+
+# ─── Scratch text outputs ───────────────────────────────────
+asin_*.txt
+helpful_analysis.txt
+pv_analysis.txt
+top_products.txt
+revlon_repeat.txt
+result*.txt
+asin_field_check.txt
+repeat_analysis.txt
+
+# ─── Old / duplicate directories ────────────────────────────
+latex/
+translation/
+output/
+tasks/
+.claude/
+排版需求图片版/
+
+# ─── Word documents ─────────────────────────────────────────
+*.docx
+*.doc
+~$*
+
+# ─── Internal working docs ──────────────────────────────────
+*_REPORT.md
+PRD_*.md
+图表插入完成报告.md
+bi_ye_lun_wen.txt
+bi_ye_lun_wen.txt.bak
+new_conclusion_chapter.txt
+
+# ─── Misc ───────────────────────────────────────────────────
+*.zip
+ralph.config.json
+run_overnight.sh
+服务型领导*.pdf
+毕业论文*.pdf
+
+# ─── Backup builds in latex_new ─────────────────────────────
+latex_new/main_*.pdf
+latex_new/main_fixed.*
+latex_new/main_v*.pdf
+latex_new/main_v*.aux
+latex_new/main_v*.bbl
+latex_new/main_v*.bcf
+latex_new/main_v*.blg
+latex_new/main_v*.log
+latex_new/main_v*.out
+latex_new/main_v*.toc
+latex_new/main_v*.run.xml
+latex_new/main_old_backup.pdf
+latex_new/figures/_font_test.png
+latex_new/figures/research_framework.aux
+latex_new/figures/research_framework.log
+latex_new/figures/research_framework.pdf
+latex_new/figures/*_new.png
+
+# ─── OS files ───────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini

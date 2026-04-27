@@ -1,0 +1,153 @@
+% appendix.tex — 附录
+\section*{附录}
+\addcontentsline{toc}{section}{附录}
+
+\subsection*{附录11.1\quad 项目文件结构}
+
+\begin{verbatim}
+bi_ye_she_ji/
+├── data/                          # 数据文件夹
+│   ├── reviews_B004EDYQX6.jsonl  # 原始评论数据（1331条）
+│   ├── cleaned_reviews.csv        # 清洗后的数据（1331条，含未验证购买）
+│   └── final_analysis_data.csv    # 最终分析数据（1331条）
+├── code/                          # 代码文件夹
+│   ├── config.py                  # API配置
+│   ├── data_preprocessing.py      # 数据预处理
+│   ├── variable_extraction.py     # 变量提取（API调用）
+│   ├── load_product_metadata.py   # 商品元数据加载
+│   └── test_extraction.py         # 小批量测试脚本
+└── output/                        # 输出文件夹
+    └── figures/                   # 图表文件夹
+\end{verbatim}
+
+\subsection*{附录11.2\quad 核心代码模块说明}
+
+\subsubsection*{11.2.1\quad 数据预处理模块}
+
+\textbf{功能}：将原始JSON评论数据清洗为规整的CSV文件。
+
+\textbf{主要函数}：
+\begin{itemize}
+  \item \texttt{remove\_html\_tags(text)}：移除HTML标签
+  \item \texttt{preprocess\_reviews(input\_file, output\_file)}：数据预处理主函数
+\end{itemize}
+
+\textbf{处理步骤}：
+\begin{enumerate}
+  \item 读取JSONL文件
+  \item 合并\texttt{title}和\texttt{text}字段
+  \item 移除HTML标签
+  \item 生成\texttt{review\_id}
+  \item 保存为CSV
+\end{enumerate}
+
+\subsubsection*{11.2.2\quad 变量提取模块}
+
+\textbf{功能}：通过大模型API提取消费者信念、评价、强度和行为意向。
+
+\textbf{主要函数}：
+\begin{itemize}
+  \item \texttt{extract\_beliefs\_and\_evaluation(full\_text, product\_metadata)}：提取信念与评价
+  \item \texttt{assess\_belief\_strength(belief\_text, review\_context, review\_length)}：评估信念强度
+  \item \texttt{extract\_behavioral\_intention(full\_text)}：提取行为意向
+  \item \texttt{main\_extraction\_pipeline()}：主流程函数
+\end{itemize}
+
+\textbf{关键特性}：
+\begin{itemize}
+  \item 支持断点续传
+  \item 自动错误处理和重试
+  \item 每10条保存临时结果
+  \item 支持商品元数据增强
+\end{itemize}
+
+\subsubsection*{11.2.3\quad 商品元数据加载模块}
+
+\textbf{功能}：从元数据文件中加载商品信息。
+
+\textbf{主要函数}：
+\begin{itemize}
+  \item \texttt{load\_product\_metadata(metadata\_file, product\_id)}：加载商品元数据
+  \item \texttt{format\_metadata\_for\_prompt(metadata)}：格式化元数据用于提示词
+\end{itemize}
+
+\subsection*{附录11.3\quad 数据文件说明}
+
+\subsubsection*{11.3.1\quad cleaned\_reviews.csv}
+
+\textbf{格式}：CSV文件，UTF-8编码。
+
+\textbf{列说明}：
+\begin{itemize}
+  \item \texttt{review\_id}：评论唯一标识符（R0001, R0002, \ldots）
+  \item \texttt{full\_text}：完整评论文本（title + text，已移除HTML标签）
+  \item \texttt{rating}：产品评分（1--5分）
+\end{itemize}
+
+\textbf{行数}：1{,}331行（包含全部评论，不以 verified\_purchase 过滤）。
+
+\subsubsection*{11.3.2\quad final\_analysis\_data.csv}
+
+\textbf{格式}：CSV文件，UTF-8编码。
+
+\textbf{列说明}：
+\begin{itemize}
+  \item \texttt{review\_id}：评论唯一标识符
+  \item \texttt{ATT}：态度指数（$\text{ATT} = \Sigma(b_i \times e_i)$）
+  \item \texttt{BI}：行为意向（0--3整数）
+  \item \texttt{rating}：产品评分（1--5分）
+  \item \texttt{reviewer\_experience}：评论者经验（Beauty品类历史评论总数）
+  \item \texttt{beliefs}：JSON格式的信念提取原始数据，含$b_i$（信念强度，0.4--1.0）、$e_i$（情感极性，$-1/0/+1$）、\texttt{type}（信念类型）字段
+\end{itemize}
+
+\textbf{行数}：1{,}331行（包含已验证购买和未验证购买评论）。
+
+\textbf{数据质量}：ATT完整率86.9\%（$N=1{,}157$），BI完整率22.4\%（$N=298$），rating字段100\%完整，ATT取值范围为$-4.1$至$4.6$，BI取值范围为0--3，rating取值范围为1--5。
+
+\subsection*{附录11.4\quad 技术环境}
+
+\subsubsection*{11.4.1\quad Python环境}
+
+\textbf{Python版本}：3.7+
+
+\textbf{主要依赖包}：
+\begin{itemize}
+  \item \texttt{pandas} $\geq$ 1.4.0
+  \item \texttt{openai} $\geq$ 1.0.0
+  \item \texttt{statsmodels} $\geq$ 0.13.0
+  \item \texttt{scikit-learn} $\geq$ 1.0.0
+  \item \texttt{matplotlib} $\geq$ 3.5.0
+  \item \texttt{seaborn} $\geq$ 0.11.0
+  \item \texttt{scipy} $\geq$ 1.9.0
+\end{itemize}
+
+\subsubsection*{11.4.2\quad API配置}
+
+\textbf{API提供商}：便携AI聚合API平台
+
+\textbf{BASE\_URL}：\texttt{https://api.bianxie.ai/v1}
+
+\textbf{模型}：\texttt{deepseek-chat}
+
+\textbf{API延迟}：1.0秒/次（可根据配额调整）
+
+\subsection*{附录11.5\quad 质量控制措施}
+
+\begin{enumerate}
+  \item \textbf{数据筛选}：保留全部1{,}331条评论（包含已验证与未验证购买），verified\_purchase与ATT相关系数$r=0.032$（$p=\text{ns}$），对分析结果影响可忽略。
+  \item \textbf{文本清洗}：移除HTML标签，清理格式，确保文本质量。
+  \item \textbf{API调用质量控制}：自动重试机制（最多3次）；API延迟控制（避免速率限制）；错误处理和日志记录。
+  \item \textbf{提取结果验证}：JSON格式验证；数值范围检查（ATT、BI、rating）；小批量测试和人工核对。
+  \item \textbf{断点续传}：每10条保存临时结果，支持中断后继续，避免数据丢失。
+\end{enumerate}
+
+\subsection*{附录11.6\quad 研究伦理说明}
+
+本研究使用的数据来自亚马逊电商平台的公开评论数据，所有数据均为公开可获取的信息。研究过程中：
+
+\begin{enumerate}
+  \item \textbf{数据匿名化}：研究仅使用评论内容，不涉及用户个人身份信息。
+  \item \textbf{数据使用}：数据仅用于学术研究，不用于商业用途。
+  \item \textbf{数据保护}：所有数据文件存储在本地，不对外公开。
+  \item \textbf{研究目的}：本研究旨在理解消费者行为，为学术研究和企业实践提供参考。
+\end{enumerate}

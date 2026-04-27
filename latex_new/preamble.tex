@@ -1,0 +1,252 @@
+% ============================================================
+% preamble.tex —— 大连理工大学本科毕业论文 LaTeX 格式设置
+% 编译方式：xelatex -> biber -> xelatex -> xelatex
+% ============================================================
+
+% ---------- 页面尺寸 ----------
+\usepackage{geometry}
+\geometry{
+  paper     = a4paper,
+  top       = 35mm,
+  bottom    = 25mm,
+  left      = 25mm,
+  right     = 25mm,
+  headsep   = 10mm,
+  footskip  = 20mm,
+  headheight= 14pt,
+}
+
+% ---------- 中英文字体 ----------
+\usepackage{fontspec}
+\usepackage{xeCJK}
+% 中文字体（Windows系统内置）
+\setCJKmainfont{SimSun}[
+  BoldFont   = SimHei,
+  ItalicFont = KaiTi,
+  AutoFakeBold = 2,
+]
+\setCJKsansfont{SimHei}[AutoFakeBold = 2]
+\setCJKmonofont{FangSong}
+% 华文细黑（封面题目用，AutoFakeBold模拟加粗）
+\newfontfamily\xihei{STXihei}[AutoFakeBold=2]
+% 英文字体
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+
+% ---------- 字号别名（方便正文调用）----------
+% \zihao{-4} = 小四号 = 12pt（正文默认）
+% \zihao{4}  = 四号   = 14pt（节标题）
+% \zihao{-3} = 小三号 = 15pt（章标题）
+
+% ---------- 行距 ----------
+\usepackage{setspace}
+\setstretch{1.25}                     % 多倍行距1.25（模板要求）
+
+% ---------- 首行缩进 ----------
+\usepackage{indentfirst}
+\setlength{\parindent}{2\ccwd}        % 首行缩进2个中文字符
+
+% ---------- 段间距 ----------
+\setlength{\parskip}{0pt}
+
+% ---------- 章节标题格式（ctex宏包已在主文件加载）----------
+\ctexset{
+  % 一级标题：黑体，小三，居左，段后1行
+  section = {
+    format      = \zihao{-3}\heiti\raggedright,
+    beforeskip  = 0pt,
+    afterskip   = 22pt,   % 1行 = 小三(15pt)×1.5倍行距 ≈ 22pt
+  },
+  % 二级标题：黑体，四号，居左
+  subsection = {
+    format      = \zihao{4}\heiti\raggedright,
+    beforeskip  = 6pt,
+    afterskip   = 0pt,
+  },
+  % 三级标题：黑体，小四，居左
+  subsubsection = {
+    format      = \zihao{-4}\heiti\raggedright,
+    beforeskip  = 6pt,
+    afterskip   = 0pt,
+  },
+}
+
+% ---------- 目录格式 ----------
+\usepackage{tocloft}
+% 目录标题：黑体，小三，居中
+\renewcommand{\contentsname}{目\quad 录}
+% 一级目录：黑体，小四
+\renewcommand{\cftsecfont}{\heiti\zihao{-4}}
+\renewcommand{\cftsecpagefont}{\zihao{-4}}
+% 二级及以下目录：宋体，小四
+\renewcommand{\cftsubsecfont}{\songti\zihao{-4}}
+\renewcommand{\cftsubsecpagefont}{\zihao{-4}}
+\renewcommand{\cftsubsubsecfont}{\songti\zihao{-4}}
+\renewcommand{\cftsubsubsecpagefont}{\zihao{-4}}
+\setlength{\cftbeforesecskip}{6pt}
+
+% ---------- 页眉页脚 ----------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\zihao{5}\songti 基于在线评论的消费者多属性态度预测效度研究}
+\fancyfoot[C]{\zihao{-5}\songti \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% 纯页码样式（摘要、目录用）
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\zihao{-5}\songti \thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% ---------- 参考文献（GB/T 7714-2015）----------
+\usepackage[
+  backend  = biber,
+  style    = gb7714-2015,
+  citestyle = gb7714-2015,
+  gbpub    = false,
+  doi      = false,
+  url      = false,
+]{biblatex}
+\addbibresource{refs/refs01.bib}   % [1]-[10]  态度理论、评论影响
+\addbibresource{refs/refs02.bib}   % [11]-[20] 文本信息量、行为意向
+\addbibresource{refs/refs03.bib}   % [21]-[30] CMV/效度、ABSA、LLM
+\addbibresource{refs/refs04.bib}   % [31]-[41] 中文NLP、消费者专业性
+\addbibresource{refs/refs05.bib}   % [42]+  补充文献条目
+
+% ---------- 表格 ----------
+\usepackage{booktabs}     % 三线表：\toprule \midrule \bottomrule
+\usepackage{longtable}    % 跨页长表格
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{threeparttable}  % tablenotes 表格注脚环境
+
+% 表格字体默认小五号
+\let\oldtabular\tabular
+\renewcommand{\tabular}{\zihao{5}\oldtabular}
+
+% ---------- 图片 ----------
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{{figures/}}
+
+% ---------- 图表标题格式 ----------
+\usepackage{caption}
+\captionsetup{
+  font       = {small},             % 宋体五号
+  labelsep   = space,
+  skip       = 6pt,
+}
+% 图标题在图下方，表标题在表上方（通过放置位置控制，无需captionsetup）
+
+% 图/表编号格式：图1-1，表2-3
+\renewcommand{\thefigure}{\thesection-\arabic{figure}}
+\renewcommand{\thetable}{\thesection-\arabic{table}}
+
+% ---------- 数学公式 ----------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% 公式编号格式：(1-1)
+\renewcommand{\theequation}{\thesection-\arabic{equation}}
+
+% ---------- tikz（研究框架图）----------
+\usepackage{tikz}
+\usetikzlibrary{
+  shapes.geometric,
+  arrows.meta,
+  positioning,
+  calc,
+  fit,
+  backgrounds,
+  decorations.pathreplacing,
+}
+
+% ---------- 超链接（目录可点击）----------
+\usepackage[
+  colorlinks = true,
+  linkcolor  = black,
+  citecolor  = black,
+  urlcolor   = blue,
+  hidelinks,
+]{hyperref}
+
+% ---------- 其他常用宏包 ----------
+\usepackage{xcolor}
+\usepackage{listings}       % 代码块（附录用）
+\usepackage{enumitem}       % 列表格式控制
+\usepackage{footnotehyper}  % 脚注
+\usepackage{rotating}       % 旋转表格
+\usepackage{pdflscape}      % 横向页面
+
+% 列表间距压缩
+\setlist{
+  topsep    = 4pt,
+  itemsep   = 2pt,
+  parsep    = 0pt,
+  leftmargin = 2\ccwd,
+}
+
+% ---------- 代码块样式 ----------
+\lstset{
+  basicstyle   = \ttfamily\small,
+  breaklines   = true,
+  frame        = single,
+  numbers      = left,
+  numberstyle  = \tiny\color{gray},
+  keywordstyle = \color{blue}\bfseries,
+  commentstyle = \color{gray}\itshape,
+  stringstyle  = \color{orange},
+  showstringspaces = false,
+  xleftmargin  = 2em,
+}
+
+% ---------- 自定义命令 ----------
+% 统计符号
+\newcommand{\N}{\textit{N}}
+\newcommand{\pval}{\textit{p}}
+\newcommand{\betacoef}{\(\beta\)}
+\newcommand{\Rsq}{\(R^2\)}
+\newcommand{\DeltaRsq}{\(\Delta R^2\)}
+
+% ATT公式
+\newcommand{\ATTformula}{%
+  \text{ATT} = \sum_{i=1}^{n} b_i \times e_i
+}
+
+% 显著性标注
+\newcommand{\sig}[1]{%
+  \ifcase#1
+    \or $^{*}$%
+    \or $^{**}$%
+    \or $^{***}$%
+  \fi
+}
+
+% 假设环境
+\newcounter{hypothesis}
+\newenvironment{hypothesis}[1][]{%
+  \refstepcounter{hypothesis}%
+  \par\medskip\noindent%
+  \textbf{假设\thehypothesis（H\thehypothesis）}%
+  \ifx&#1&\else（#1）\fi：%
+}{%
+  \par\medskip%
+}
+
+% 注释行（表格下方）
+\newcommand{\tablenote}[1]{%
+  \par\smallskip\noindent\footnotesize\textit{注：}#1
+}
+
+% ---------- PDF元数据 ----------
+\hypersetup{
+  pdftitle  = {基于在线评论的消费者多属性态度预测效度研究},
+  pdfauthor = {大连理工大学},
+}

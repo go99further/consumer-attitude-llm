@@ -1,0 +1,38 @@
+% abstract.tex — 中英文摘要
+\thispagestyle{plain}
+
+\section*{摘\quad 要}
+\addcontentsline{toc}{section}{摘要}
+
+{\zihao{-4}\songti
+
+如何从海量非结构化评论文本中自动提取消费者心理变量并验证其测量效度，是消费者行为研究的重要方法论问题。本研究以亚马逊平台伯特小蜜蜂护手霜套装（ASIN: B004EDYQX6）的评论数据为研究对象，采用大语言模型（DeepSeek-V3.2）从评论文本中提取基于Fishbein多属性态度理论的消费者态度指数（$\text{ATT} = \sum b_i \times e_i$），并系统验证其预测效度。
+
+研究采用两层设计：全样本分析（$N=1{,}157$）以平台评分（Rating）为效标检验ATT的预测效度（H1）及评论者经验的调节效应（H2）；子样本分析（$N=298$）检验ATT对行为意向（BI）的直接效应（H3）及在控制Rating后的增量效度（H4）。ATT、Rating与Reviewer Experience分别来自LLM文本提取、平台客观数据和全品类行为数据三个独立来源，H1/H2分析从设计层面消除了同源方差（CMV）问题；H3/H4分析中ATT与BI同源于同一评论文本，存在CMV局限，在局限性部分予以讨论。
+
+H1/H2分析结果显示，ATT与Rating显著正相关（$r=0.722$，$p<0.001$），有序Logistic回归证实ATT显著正向预测Rating（$\beta=1.867$，$z=19.8$，$p<0.001$），H1获得支持。评论者经验对ATT--Rating关系存在显著负向调节（$\beta=-0.008$，$p=0.001$）：低经验组ATT--Rating斜率（0.741）略高于高经验组（0.573），反向调节方向的理论含义在讨论章节展开分析，H2以探索性结果获得支持。H3/H4分析结果显示，ATT显著正向预测BI（$\beta=0.167$，$p=0.004$），H3获得支持；在控制Rating后ATT仍提供显著增量预测力（$\Delta R^2=0.018$，$F=8.32$，$p=0.004$），H4获得支持。
+
+本研究的贡献体现在三个方面：（1）提出并验证了基于LLM的多属性态度提取方法，ATT计算准确率100\%，重测信度$r=0.892$，$e_i$一致率97.2\%，为"Text as Data"范式在消费者行为研究中的应用提供方法论依据；（2）通过三数据源设计从根源消除CMV，并系统论证了以重复购买行为或有用票数等外部指标替代文本提取BI的不可行性，从数据结构和构念效度两个层面反面凸显了该设计的方法论价值，为LLM文本分析研究提供可复用的CMV控制范式；（3）H4证明多属性分解提供了单一评分之外的额外信息（$\Delta R^2=0.018$），支持了多属性态度理论的区分效度。
+
+\vspace{1em}
+\noindent{\heiti 关键词：}在线评论；消费者多属性态度；大语言模型；预测效度；评论者经验；调节效应；Fishbein多属性态度理论
+}
+
+\clearpage
+
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+{\zihao{-4}
+
+How to automatically extract consumer psychological variables from unstructured review text and validate their measurement constitutes a key methodological challenge in consumer behavior research. This study applied a large language model (DeepSeek-V3.2) to extract a multi-attribute attitude index ($\text{ATT} = \sum b_i \times e_i$) based on Fishbein's theory from 1,331 Amazon reviews of Burt's Bees Hand Cream Gift Set (ASIN: B004EDYQX6), and systematically validated its predictive validity.
+
+The study employed a two-level design. The full-sample analysis ($N=1{,}157$) examined ATT's predictive validity against platform ratings (H1) and the moderating role of Reviewer Experience (H2). The sub-sample analysis ($N=298$) tested ATT's direct effect on behavioral intention (H3) and its incremental validity beyond ratings (H4). ATT, Rating, and Reviewer Experience originated from three independent sources---LLM text extraction, objective platform data, and cross-category behavioral records---eliminating common method variance (CMV) by design for H1/H2; the CMV limitation in H3/H4 (ATT and BI from the same text) is acknowledged in the limitations section.
+
+Results showed that ATT significantly predicted Rating ($r=0.722$, $p<0.001$; ordinal logistic $\beta=1.867$, $z=19.8$, $p<0.001$), supporting H1. Reviewer Experience exerted a significant negative moderation on the ATT--Rating relationship ($\beta=-0.008$, $p=0.001$): the ATT--Rating slope was stronger for low-experience reviewers (0.741) than high-experience reviewers (0.573), an exploratory finding whose theoretical implications are discussed. ATT also significantly predicted BI ($\beta=0.167$, $p=0.004$; H3 supported) and retained incremental predictive power after controlling for Rating ($\Delta R^2=0.018$, $F=8.32$, $p=0.004$; H4 supported).
+
+The main contributions are threefold: (1) an LLM-based multi-attribute attitude extraction method is proposed and validated (ATT accuracy 100\%, test--retest reliability $r=0.892$, $e_i$ consistency 97.2\%), providing a methodological foundation for the ``Text as Data'' paradigm in consumer research; (2) a three-data-source design eliminates CMV at its root; the infeasibility of using repeat-purchase behavior or helpful-vote counts as external BI proxies is systematically demonstrated from both data-structural and construct-validity perspectives, underscoring the irreplaceability of this design and offering a replicable methodological template; (3) the incremental validity of ATT beyond ratings ($\Delta R^2=0.018$) confirms the discriminant value of multi-attribute decomposition over single summary scores.
+
+\vspace{1em}
+\noindent\textbf{Keywords:} Online Reviews; Consumer Multi-attribute Attitude; Large Language Models; Predictive Validity; Reviewer Experience; Moderation Effect; Fishbein Multi-attribute Attitude Theory
+}
