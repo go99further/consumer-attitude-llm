@@ -1,0 +1,118 @@
+% 研究框架图 - 独立TikZ文件
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, backgrounds, decorations.pathreplacing}
+\usepackage{xeCJK}
+\usepackage{amsmath}
+
+% 设置中文字体
+\setCJKmainfont{SimSun}
+\setCJKsansfont{Microsoft YaHei}
+
+\begin{document}
+\begin{tikzpicture}[
+  node distance=1.5cm and 2cm,
+  datasrc/.style={
+    rectangle, rounded corners=3pt,
+    draw=blue!50, fill=blue!5,
+    text width=3.2cm, align=center,
+    font=\small,
+    minimum height=1cm,
+  },
+  varbox/.style={
+    rectangle, rounded corners=3pt,
+    draw=green!60, fill=green!8,
+    text width=2.8cm, align=center,
+    font=\small\bfseries,
+    minimum height=1.1cm,
+  },
+  dvbox/.style={
+    rectangle, rounded corners=3pt,
+    draw=orange!60, fill=orange!8,
+    text width=3.2cm, align=center,
+    font=\small\bfseries,
+    minimum height=1.1cm,
+  },
+  modbox/.style={
+    rectangle, rounded corners=3pt,
+    draw=black!50, fill=white,
+    text width=2.8cm, align=center,
+    font=\small,
+    minimum height=1cm,
+  },
+  hyplabel/.style={
+    font=\small\bfseries,
+    text=black!80,
+  },
+  samplelabel/.style={
+    font=\small\itshape,
+    text=gray,
+  },
+  arrow/.style={-Stealth, thick, black!70},
+  modarrow/.style={-Stealth, thick, black!50, dashed},
+]
+
+% ── 数据来源标签（顶部三列）
+\node[datasrc] (src_llm) at (0, 0)
+  {数据源①\\LLM评论文本提取};
+\node[datasrc] (src_platform) at (5, 0)
+  {数据源②\\平台结构化字段};
+\node[datasrc] (src_behavior) at (10, 0)
+  {数据源③\\全品类行为数据};
+
+% ── H1/H2区域：变量节点（第二行）
+\node[varbox] (ATT) at (0, -2.5)
+  {多属性态度\\ATT};
+\node[dvbox] (Rating) at (5, -2.5)
+  {评论评分\\Rating\\(1--5星)};
+\node[modbox] (RE) at (10, -2.5)
+  {评论者经验\\Reviewer Exp.};
+
+% 数据源 → 变量（细线）
+\draw[gray!60, thin] (src_llm) -- (ATT);
+\draw[gray!60, thin] (src_platform) -- (Rating);
+\draw[gray!60, thin] (src_behavior) -- (RE);
+
+% ── H1 主效应箭头
+\draw[arrow] (ATT) -- node[above, hyplabel]{H1} (Rating);
+
+% ── H2 调节效应（RE → ATT→Rating 交互）
+\draw[modarrow] (RE.south) -- ++(0,-0.6)
+  -| node[near start, right, hyplabel, xshift=2pt]{H2} ([xshift=0pt]$(ATT)!0.5!(Rating)$);
+
+% ── 分隔线
+\draw[gray!40, dashed, thick] (-2, -4.2) -- (12, -4.2);
+
+% ── 样本标注（H1/H2区域）
+\node[samplelabel] at (5, -3.6) {H1/H2分析全样本 $N=1{,}157$};
+
+% ── H3/H4区域：变量节点（第三行）
+\node[varbox] (ATT2) at (0, -5.5)
+  {多属性态度\\ATT};
+\node[dvbox] (BI) at (10, -5.5)
+  {行为意向\\BI\\(0--3量表)};
+\node[modbox] (Rating2) at (5, -5.5)
+  {评论评分\\Rating\\(控制变量)};
+
+% 说明：ATT2与ATT均来自LLM，Rating2来自平台
+\draw[gray!60, thin] (src_llm.south) -- ++(0,-0.4)
+  -- ++(0,-1.2) -- ($(src_llm.south)+(0,-1.6)$)
+  .. controls +(0,-0.5) and +(0,0.5) .. (ATT2.north);
+\draw[gray!60, thin] (src_platform.south) -- ++(0,-0.4)
+  .. controls +(0,-1.8) and +(0,1.2) .. (Rating2.north);
+
+% H3 箭头：ATT → BI
+\draw[arrow] (ATT2) -- node[above, hyplabel]{H3} (BI);
+
+% Rating 控制变量箭头
+\draw[arrow] (Rating2) -- node[above, font=\small]{控制} (BI);
+
+% H4 标注：ΔR²增量弓形
+\draw[arrow, bend left=30] (ATT2.south) to
+  node[below, hyplabel]{H4\;$\Delta R^2$增量} (BI.south);
+
+% ── 样本标注（H3/H4区域）
+\node[samplelabel] at (5, -7.2) {H3/H4分析子样本 $N=298$};
+
+\end{tikzpicture}
+\end{document}

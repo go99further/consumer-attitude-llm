@@ -1,0 +1,459 @@
+% ch5_design.tex — 第五章 研究设计
+\section{研究设计}
+
+\subsection{研究方法选取}
+
+本研究采用大语言模型（LLM）从评论文本中提取消费者多属性态度，相较于传统研究方法具有显著优势。传统问卷调查虽然信效度有保障，但难以大规模应用于已存在的海量评论文本；词典方法（如LIWC、SentiWordNet）依赖预设词典，难以处理否定结构、语境修饰和细粒度属性判断；监督学习方法需要大量标注数据，标注成本高且迁移性差。
+
+相比之下，大语言模型具有三方面优势：第一，基于Fishbein理论的提示词设计使LLM能够执行与理论构念高度一致的信念提取任务，无需专门标注数据；第二，LLM能够处理否定结构、程度副词和隐含情感等复杂语言现象，准确评估信念强度；第三，LLM支持零样本（zero-shot）和少样本（few-shot）应用，适合大规模文本分析\cite{grimmer2022}。
+
+本研究选用DeepSeek-V3.2作为主要提取模型。该模型对英文评论文本具有强大的理解能力，成本效益高，且在预实验中与人工标注的一致率超过85\%，满足研究要求。
+
+\subsection{研究设计框架}
+
+\subsubsection{整体设计}
+
+本研究构建以下两层检验框架：
+
+\textbf{H1/H2理论模型}：以LLM从评论文本中提取的多属性态度指数（ATT）为自变量，以平台结构化字段中的评分（Rating，1--5星）为因变量，以评论者在Amazon Beauty品类的历史评论总数（Reviewer Experience）为调节变量。控制变量包括评论长度（review\_length）、有用票数（helpful\_vote）和评论年份（review\_year）。ATT来自LLM文本提取，Rating来自平台客观数据，Reviewer Experience来自全品类行为数据，三变量来自三个完全独立的数据源，从根源上消除了同源方差（CMV）问题。分析样本为ATT和Rating均完整的全样本（$N=1{,}157$）。
+
+\textbf{H3/H4理论模型}：以ATT为自变量，以从同一评论文本中提取的行为意向（BI，0--3量表）为因变量，以Rating为控制变量，检验ATT在控制Rating后的增量预测力（$\Delta R^2$）。ATT和BI均来自同一评论文本，存在同源方差局限（Harman单因子检验=76.8\%），在局限性部分诚实报告。分析样本为明确表达行为意向的子样本（$N=298$）。
+
+图\ref{fig:research_framework}展示了本研究的整体框架与假设检验路径。
+
+% ── 研究框架图（TikZ 直接绘制）
+\begin{figure}[htbp]
+\centering
+
+\begin{tikzpicture}[
+  line cap  = round,
+  line join = round,
+  % ── 变量框：统一尺寸，充足内边距
+  varbox/.style = {
+    rectangle, rounded corners = 2pt,
+    draw = black, line width = 0.5pt,
+    fill = white,
+    minimum width  = 3.2cm,
+    minimum height = 1.10cm,
+    align = center,
+    text width     = 2.9cm,
+    inner sep      = 6pt,
+    font = \fontsize{10.5pt}{14pt}\selectfont\songti,
+  },
+  % ── 控制变量框（浅灰底，与普通框等宽）
+  ctrlbox/.style = {
+    varbox,
+    fill = black!7,
+    draw = black!45,
+  },
+  % ── 模块区域标题横幅
+  modbox/.style = {
+    rectangle, rounded corners = 2pt,
+    draw = black!55, line width = 0.5pt,
+    fill = black!5,
+    minimum height = 0.78cm,
+    inner sep      = 6pt,
+    align = center,
+    font = \fontsize{10.5pt}{14pt}\selectfont\songti,
+  },
+  % ── 假设标注小圆角框
+  hbox/.style = {
+    rectangle, rounded corners = 2pt,
+    draw = black!55, line width = 0.4pt,
+    fill = white,
+    inner sep = 3pt,
+    font = \fontsize{9pt}{12pt}\selectfont\songti,
+  },
+  % ── 主效应：实线粗箭头
+  mainpath/.style = {
+    ->, >= {Stealth[length=5.5pt, width=4pt]},
+    line width = 0.75pt, black,
+  },
+  % ── 调节 / 增量：虚线细箭头
+  modpath/.style = {
+    ->, >= {Stealth[length=5pt, width=3.5pt]},
+    line width = 0.5pt, black,
+    dashed, dash pattern = on 5pt off 2.5pt,
+  },
+  % ── 控制路径：灰色细实线
+  ctrlpath/.style = {
+    ->, >= {Stealth[length=4.5pt, width=3.5pt]},
+    line width = 0.5pt, black!50,
+  },
+]
+
+% ╔══════════════════════════════════════════════╗
+% ║   坐标规划                                   ║
+% ║   图总宽 ≈ 14 cm（±7 cm）                    ║
+% ║   上模块变量框   y =  0.00 cm                ║
+% ║   上/下分隔线    y = -2.20 cm                ║
+% ║   下模块变量框   y = -4.80 cm                ║
+% ║   变量框水平间距  ±5.0 cm                    ║
+% ╚══════════════════════════════════════════════╝
+
+% ──────────────────────────────────────────────
+% 全样本模块 — H1 / H2
+% ──────────────────────────────────────────────
+
+% 模块标题横幅（y = 1.30 cm）
+\node[modbox, minimum width = 13.6cm] at (0, 1.30cm)
+  {全样本分析\quad H1 / H2\quad ($N = 1{,}157$)};
+
+% 三个变量框（y = 0，间距 ±5.0 cm）
+\node[varbox] (ATT1) at (-5.0cm, 0) {ATT\\多属性态度};
+\node[varbox] (RAT1) at ( 0,     0) {Rating\\评论评分};
+\node[varbox] (EXP1) at ( 5.0cm, 0) {Reviewer\\Experience};
+
+% H1：ATT → Rating（实线，假设标注在上方）
+\draw[mainpath] (ATT1.east) -- (RAT1.west);
+\node[hbox] at (-2.50cm, 0.62cm) {H1};
+
+% H2 调节路径：EXP → 中点向下插入 ATT-Rating 连线
+% 折线：EXP 底部 → 水平到连线中点上方 → 向上箭头至连线
+\draw[modpath]
+  (EXP1.south)
+  -- ( 5.0cm, -0.80cm)
+  -- (-2.50cm, -0.80cm)
+  -- (-2.50cm, -0.08cm);
+\node[hbox] at (1.25cm, -1.12cm) {H2（调节）};
+
+% 控制变量标注（y = -1.62 cm，三项竖排，灰色）
+\node[align=center,
+      font=\fontsize{9pt}{13pt}\selectfont\songti,
+      text=black!55]
+  at (0, -1.62cm)
+  {控制变量：review\_length\quad helpful\_vote\quad review\_year};
+
+% 分隔虚线（y = -2.20 cm）
+\draw[black!25, line width=0.4pt, dashed]
+  (-6.8cm, -2.20cm) -- (6.8cm, -2.20cm);
+
+% ──────────────────────────────────────────────
+% 子样本模块 — H3 / H4
+% ──────────────────────────────────────────────
+
+% 模块标题横幅（y = -2.90 cm）
+\node[modbox, minimum width = 13.6cm] at (0, -2.90cm)
+  {子样本分析\quad H3 / H4\quad ($N = 298$)};
+
+% 三个变量框（y = -4.80 cm）
+\node[varbox]  (ATT2) at (-5.0cm, -4.80cm) {ATT\\多属性态度};
+\node[ctrlbox] (RAT2) at ( 0,     -4.80cm) {Rating\\（控制变量）};
+\node[varbox]  (BI2)  at ( 5.0cm, -4.80cm) {BI\\行为意向};
+
+% H3：ATT → BI 上弧（宽弧度，留白充足）
+\draw[mainpath]
+  (ATT2.north east) to[out=28, in=152] (BI2.north west);
+\node[hbox] at (0, -3.68cm) {H3（主效应）};
+
+% Rating → BI 控制路径（灰色实线）
+\draw[ctrlpath] (RAT2.east) -- (BI2.west);
+\node[font=\fontsize{9pt}{12pt}\selectfont\songti, text=black!50]
+  at (2.50cm, -4.46cm) {控制};
+
+% H4：ATT → BI 下弧虚线（与 H3 弧度对称）
+\draw[modpath]
+  (ATT2.south east) to[out=-28, in=-152] (BI2.south west);
+\node[hbox] at (0, -5.94cm) {H4：$\Delta R^2$ 增量效度};
+
+% ──────────────────────────────────────────────
+% 图例（y = -7.00 cm）
+% ──────────────────────────────────────────────
+\def\LY{-7.00cm}
+
+% 实线图例
+\draw[mainpath] (-3.8cm, \LY) -- (-2.6cm, \LY);
+\node[right, font=\fontsize{9pt}{12pt}\selectfont\songti]
+  at (-2.5cm, \LY) {主效应路径};
+
+% 虚线图例
+\draw[modpath]  ( 1.2cm, \LY) -- ( 2.4cm, \LY);
+\node[right, font=\fontsize{9pt}{12pt}\selectfont\songti]
+  at ( 2.5cm, \LY) {调节效应 / 增量效度路径};
+
+% ──────────────────────────────────────────────
+% 底部注释（y = -7.90 cm）
+% ──────────────────────────────────────────────
+\node[align=center,
+      font=\fontsize{9pt}{13pt}\selectfont\songti,
+      text=black!65,
+      text width=13.0cm]
+  at (0, -7.90cm)
+  {注：ATT 与 Rating 来自独立数据源，不存在同源方差（CMV）问题；\\
+   ATT 与 BI 均来自同一评论文本，存在 CMV 局限（Harman 单因子 = 76.8\%）。};
+
+\end{tikzpicture}
+
+\caption{研究框架与假设检验路径图}
+\label{fig:research_framework}
+\end{figure}
+
+\subsection{研究对象}
+
+本研究以亚马逊电商平台上伯特小蜜蜂护手霜套装（Burt's Bees Hand Cream Gift Set，ASIN: B004EDYQX6）的评论数据为研究对象。选择该产品出于以下考虑：
+
+\begin{enumerate}
+  \item \textbf{评论数量充足}：该产品在2012年至2023年间累计收集1{,}331条评论，满足统计分析对样本量的要求（H1/H2分析 $N=1{,}157$；H3/H4分析 $N=298$）。
+  \item \textbf{品类代表性强}：美妆护肤品类是在线评论研究的典型场景，消费者评论内容丰富，涵盖多个属性维度（如香味、滋润度、包装、价格等）。
+  \item \textbf{评论质量高}：90.3\%的评论经亚马逊认证为已验证购买（verified purchase），评论者均基于真实使用体验撰写评论，保障了数据的生态效度。
+  \item \textbf{时间跨度长}：11年的评论数据（2012--2023年）涵盖了产品生命周期的不同阶段，有助于检验研究结论的稳健性。
+\end{enumerate}
+
+\subsection{数据来源与预处理}
+
+\subsubsection{数据来源}
+
+原始数据来源于亚马逊公开评论数据集（JSONL格式），每条记录包含以下字段：rating（1--5星评分）、title（评论标题）、text（评论正文）、asin（产品ASIN编码）、verified\_purchase（是否验证购买）、helpful\_vote（有用票数）、timestamp（评论时间戳）、user\_id（评论者唯一标识符）。
+
+\subsubsection{数据筛选}
+
+数据筛选阶段考虑是否将verified\_purchase作为过滤条件。统计分析显示，已验证购买评论占比90.3\%，且verified\_purchase与ATT的相关系数$r=0.032$（$p=\text{ns}$），排除未验证购买评论对分析结果影响微弱但会显著减少样本量。据此，本研究保留全部评论，不以verified\_purchase作为过滤条件，但引入Reviewer Experience（评论者历史评论总数）作为调节变量，以捕捉评论者经验差异对ATT--Rating关系的影响\cite{mitchell2022}。
+
+\subsubsection{数据清洗}
+
+数据清洗遵循以下步骤：
+
+\begin{enumerate}
+  \item \textbf{文本合并}：将评论标题（title）和正文（text）以". "连接，形成完整评论文本，以确保LLM提取时能够获取完整信息。
+  \item \textbf{HTML标签清理}：使用正则表达式移除评论中的HTML标签，包括换行标签（\verb|<br>|）和其他HTML元素：
+\begin{lstlisting}[language=Python, basicstyle=\small\ttfamily]
+import re
+text = re.sub(r'<br\s*/?>', ' ', text)
+text = re.sub(r'<[^>]+>', '', text)
+\end{lstlisting}
+  \item \textbf{评论编号生成}：为每条评论生成唯一编号（R0001至R1331），便于后续数据匹配和可靠性验证。
+  \item \textbf{完整性验证}：验证所有必要字段（rating、text、user\_id）的完整性，排除关键字段缺失的记录。
+  \item \textbf{数据存储}：清洗后的数据存储为cleaned\_reviews.csv，用于后续LLM提取和统计分析。
+\end{enumerate}
+
+\subsection{变量界定与测量}
+
+\subsubsection{消费者信念提取}
+
+消费者信念的提取基于面向级情感分析（ABSA）理论与Fishbein多属性态度理论的整合框架。LLM通过以下提示词从评论文本中识别信念陈述、判断情感极性（$e_i$）：
+
+\begin{lstlisting}[language={}, basicstyle=\small\ttfamily, breaklines=true,
+  caption={信念提取提示词（英文原版）}]
+You are a consumer psychology expert specializing in multi-attribute
+attitude theory.
+
+Theoretical Foundation: Based on ABSA theory and Fishbein's
+multi-attribute attitude theory, extract consumer beliefs from the
+review text. Each belief should reflect the consumer's evaluation
+of a specific product attribute.
+
+Belief Evaluation (e_i):
++1: positive evaluation (consumer views this attribute favorably)
+ 0: neutral evaluation (consumer is indifferent or mixed)
+-1: negative evaluation (consumer views this attribute unfavorably)
+
+Extraction Quantity Guidelines:
+- Short review (<50 chars): extract 1 belief
+- Medium review (50-500 chars): extract 1-3 beliefs
+- Long review (>500 chars): extract 3-5 beliefs
+
+Output Format:
+{"beliefs": [{"text": "belief1", "e_i": 1, "type": "attribute"},
+             {"text": "belief2", "e_i": -1, "type": "attribute"}]}
+
+IMPORTANT: ONLY extract beliefs that are EXPLICITLY stated or
+clearly implied in the text. Do NOT infer or fabricate beliefs
+that are not supported by the review content.
+\end{lstlisting}
+
+信念类型（type）分为属性级（attribute，如"香味浓郁"）和整体评价级（overall，如"整体满意"），后者在评论缺乏明确属性表达时用于捕捉消费者总体感受。
+
+\subsubsection{信念强度评估}
+
+信念强度（$b_i$）反映消费者对信念陈述的确信程度，采用0.4--1.0连续尺度：
+
+\begin{lstlisting}[language={}, basicstyle=\small\ttfamily, breaklines=true,
+  caption={信念强度评估提示词（英文原版）}]
+Evaluate the belief strength (b_i) for the following belief
+extracted from a consumer review.
+
+b_i Scale (0.4 to 1.0):
+1.0 = Absolutely certain (e.g., "This is definitely the best")
+0.9 = Very certain (e.g., "This is really great")
+0.8 = Quite certain (e.g., "This works well")
+0.7 = Possible/General statement (e.g., "This seems okay")
+0.5 = Uncertain (e.g., "I think this might be")
+0.4 = Heard/Feel vaguely (e.g., "I've heard this is")
+
+Contextual factors to consider:
+- Emphasis markers (definitely, absolutely, really, very)
+- Contrast and qualification (but, however, although)
+- Position in review (opening/closing statements often stronger)
+- Level of detail in the review
+
+Return a number between 0.4 and 1.0. Return ONLY the number,
+no explanation.
+\end{lstlisting}
+
+\subsubsection{行为意向提取}
+
+行为意向（BI）采用0--3四级量表，从评论文本中提取：
+
+\begin{lstlisting}[language={}, basicstyle=\small\ttfamily, breaklines=true,
+  caption={行为意向提取提示词（英文原版）}]
+Analyze the following consumer review and extract the behavioral
+intention (BI) expressed by the reviewer.
+
+BI Scale:
+3 = Strong explicit behavioral intention
+    (e.g., "I will definitely buy again", "Highly recommend to everyone")
+2 = Moderate behavioral intention
+    (e.g., "I would buy again", "I'd recommend this")
+1 = Weak behavioral intention / positive attitude only
+    (e.g., "I like this product", "This is a good buy")
+0 = No behavioral intention expressed
+    (reviewer describes experience without future plans)
+
+IMPORTANT:
+- Score 3 or 2 ONLY if the reviewer explicitly states future
+  purchase or recommendation plans
+- Score 1 if reviewer expresses positive attitude without explicit
+  future intentions
+- Score 0 if no forward-looking statements are present
+
+Return ONLY the number (0, 1, 2, or 3). No explanation needed.
+\end{lstlisting}
+
+\subsubsection{感知价值的处理说明}
+
+初始研究设计中曾考虑提取感知价值（Perceived Value, PV）作为额外变量。然而，统计分析显示ATT与PV之间存在极高相关（$r=0.785$，$p<0.001$，$N=845$），两者在概念上存在大量重叠，且PV同样通过LLM从同一评论文本提取，引入PV将进一步加剧同源方差问题。依据Podsakoff et al.\cite{podsakoff2003}对同源方差处理的建议，本研究排除PV，仅保留ATT作为核心自变量，以避免同源方差的叠加效应并保障回归估计的稳健性。
+
+\subsubsection{多属性态度指数计算}
+
+消费者多属性态度指数（ATT）依据Fishbein多属性态度公式计算：
+
+\begin{equation}
+\text{ATT} = \sum_{i}(b_i \times e_i)
+\end{equation}
+
+具体而言，对每条评论中提取的所有信念，计算其信念强度（$b_i$）与情感极性（$e_i$）的乘积（att\_comp），然后对所有乘积求和得到该条评论的ATT值。ATT为连续变量，数值越大表示消费者态度越积极。
+
+\subsubsection{评论评分}
+
+评论评分（Rating）直接来源于亚马逊平台的结构化字段（1--5星整数值），无需经过文本处理，是消费者对产品整体满意度的客观记录。Rating在H1/H2分析中作为因变量，在H3/H4分析中作为控制变量。
+
+\subsubsection{评论者经验}
+
+评论者经验（Reviewer Experience）通过以下步骤构建：从Amazon全品类（Beauty\_and\_Personal\_Care）的完整JSONL数据集（共23{,}911{,}390条记录）中，以user\_id为连接键，统计每位评论者在该品类的历史评论总数，作为其品类熟悉度的客观代理指标。
+
+评论者经验按评论总数划分为四个梯度：
+\begin{itemize}
+  \item 新手（Novice）：1--2条
+  \item 一般（Moderate）：3--10条
+  \item 有经验（Experienced）：11--50条
+  \item 专家（Expert）：51条及以上
+\end{itemize}
+
+经验与其他变量的相关性检验显示，Reviewer Experience与review\_length的相关系数$r=0.013$（$p=\text{ns}$），与helpful\_vote的相关系数$r=0.022$（$p=\text{ns}$），表明经验变量与控制变量之间不存在系统性关联，可作为独立的调节变量纳入分析。
+
+\subsubsection{控制变量}
+
+本研究引入以下三个控制变量：
+\begin{itemize}
+  \item \textbf{review\_length}（评论长度）：评论文本的字符数，控制评论详细程度对ATT提取质量的潜在影响。
+  \item \textbf{helpful\_vote}（有用票数）：其他用户认为该评论有用的票数，控制评论质量和影响力。
+  \item \textbf{review\_year}（评论年份）：控制不同时期产品质量变化和评论行为的系统性差异。
+\end{itemize}
+
+\subsection{LLM可靠性验证}
+
+\subsubsection{ATT计算准确性验证}
+
+对全部1{,}087条有效记录（ATT提取成功且所有信念强度均完整）进行计算准确性验证。人工重新计算ATT值，与LLM输出的ATT值进行比对，误差阈值设为0.01。验证结果显示，1{,}087条记录中计算误差均低于阈值，ATT计算准确率\textbf{100\%}，表明LLM按照Fishbein公式正确执行了加权求和计算。
+
+\subsubsection{语义相似度检验}
+
+为验证LLM提取的信念陈述是否忠实反映原始评论内容（而非凭空捏造），使用sentence-transformers库（all-MiniLM-L6-v2模型）计算提取信念与原始评论文本的语义相似度。
+
+对随机抽取的214条评论（共提取信念若干条）计算语义相似度，结果显示平均语义相似度为0.485。以相似度低于0.2作为幻觉（hallucination）判定阈值，共识别出9/214条（\textbf{4.2\%}）疑似幻觉信念，这些信念缺乏原文支撑，已在后续分析中标记。
+
+\subsubsection{人工验证}
+
+对上述214条信念样本进行人工逐一审核，判断LLM提取的信念是否有原文依据。人工验证结果显示，214条中207条（\textbf{96.7\%}）的信念有明确的原文依据；信念情感极性（$e_i$）人工判断与LLM判断一致率达到\textbf{214/214（100\%）}，表明LLM在情感方向判断上具有高度准确性。
+
+\subsubsection{幻觉防控设计}
+
+为从提示词层面降低幻觉风险，信念提取提示词中明确包含约束指令："ONLY extract beliefs that are EXPLICITLY stated or clearly implied in the text. Do NOT infer or fabricate beliefs."这一约束有效限制了LLM的过度推断行为。
+
+\subsubsection{重测信度评估}
+
+采用不同的大语言模型（qwen-plus）对随机抽取的50条评论重新执行信念提取和强度评估，计算两次提取结果的一致性：
+
+\begin{itemize}
+  \item \textbf{情感极性（$e_i$）一致率}：两次提取中，108个信念的$e_i$赋值一致率为105/108（\textbf{97.2\%}），表明情感极性提取具有高度跨模型稳定性。
+  \item \textbf{ATT重测信度}：两次ATT计算值的Pearson相关系数$r=0.892$（$p<0.001$），表明LLM提取的ATT具有良好的重测信度。
+  \item \textbf{信念强度（$b_i$）组内相关系数（ICC）}：$b_i$的ICC=0.249，低于0.70的可接受阈值，表明$b_i$的跨模型稳定性有限。这一局限性已在研究局限性章节中详细讨论。
+\end{itemize}
+
+\subsection{数据分析方法}
+
+\subsubsection{H1/H2分析方法}
+
+H1/H2分析以全样本（$N=1{,}157$）为基础，采用以下方法：
+
+\begin{enumerate}
+  \item \textbf{描述性统计}：报告各变量的均值、标准差、最大/最小值及分布特征。
+  \item \textbf{相关矩阵}：计算核心变量间的Pearson相关系数，检验变量间的双变量关系。
+  \item \textbf{CMV检验}：对H1/H2分析的三个核心变量（ATT、Rating、Reviewer Experience）执行Harman单因子检验，验证变量独立性。
+  \item \textbf{H1检验（主效应）}：以Rating为因变量（有序类别变量，1--5星），采用\textbf{有序Logistic回归}（Ordinal Logistic Regression）作为主要分析方法，同时以OLS线性回归作为稳健性检验。有序Logistic回归的选择依据是Rating数据呈显著右偏的J型分布（5星占比72.2\%），不满足OLS的正态误差假设\cite{duan2023,kim2022}。
+  \item \textbf{H2检验（调节效应）}：将ATT和Reviewer Experience均值中心化（mean-centering）后，引入交互项（ATT\_c $\times$ RE\_c），通过有序Logistic回归检验交互项系数的显著性。检查VIF值以确认无多重共线性。对显著调节效应进行简单斜率分析（simple slopes analysis），分别计算高经验组（+1SD）和低经验组（$-$1SD）的ATT对Rating的预测斜率，并绘制调节效应图。
+\end{enumerate}
+
+\subsubsection{H3/H4分析方法}
+
+H3/H4分析以BI子样本（$N=298$）为基础，采用以下方法：
+
+\begin{enumerate}
+  \item \textbf{选择偏差检验}：使用Welch's $t$检验比较BI存在组（$N=298$）与BI缺失组（$N=859$）在ATT均值上的差异，评估子样本的选择偏差程度。
+  \item \textbf{H3检验}：以OLS回归检验ATT对BI的主效应（BI $\sim$ ATT + Rating + 控制变量）。
+  \item \textbf{H4检验（增量效度）}：采用层次回归分析（hierarchical regression），共三个模型：
+    \begin{itemize}
+      \item \textbf{Model 1}：仅含控制变量（review\_length, helpful\_vote, review\_year）
+      \item \textbf{Model 2}：加入Rating
+      \item \textbf{Model 3}：在Model 2基础上加入ATT
+    \end{itemize}
+    报告Model 2→Model 3的$R^2$变化量（$\Delta R^2$）及$F$检验结果，以检验ATT在控制Rating后的增量预测力。
+\end{enumerate}
+
+\subsubsection{缺失值处理}
+
+本研究采用列删除法（listwise deletion）处理缺失值：
+\begin{itemize}
+  \item \textbf{H1/H2分析样本}（ATT+Rating均完整）：$N=1{,}157$
+  \item \textbf{H3/H4分析样本}（ATT+BI均完整）：$N=298$（BI缺失率77.6\%）
+\end{itemize}
+
+BI的高缺失率（77.6\%）并非测量失败，而是反映了理论预期：大多数消费者在评论中仅描述使用体验而不表达未来行为意向，"BI缺失"代表"评论者未表达行为意向"，属于理论上有意义的信息缺失，而非随机测量误差。
+
+\subsection{研究计划安排}
+
+本研究按以下八个阶段推进：
+
+\begin{table}[htbp]
+\centering
+\caption{研究计划安排}
+\label{tab:timeline}
+\begin{tabular}{@{}llll@{}}
+\toprule
+阶段 & 内容 & 时间 & 状态 \\
+\midrule
+第一阶段 & 文献梳理与理论框架构建 & 2026年1月 & 已完成 \\
+第二阶段 & 数据收集与清洗 & 2026年1月 & 已完成 \\
+第三阶段 & LLM提示词设计与预实验 & 2026年2月 & 已完成 \\
+第四阶段 & 大规模LLM数据提取 & 2026年2月 & 已完成 \\
+第五阶段 & LLM可靠性验证 & 2026年3月 & 已完成 \\
+第六阶段 & 统计分析与假设检验 & 2026年3月 & 已完成 \\
+第七阶段 & 论文撰写与修改 & 2026年4月 & 已完成 \\
+第八阶段 & 论文定稿与提交 & 2026年5月 & 待完成 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{当前研究进度}
+
+截至论文撰写阶段，本研究的主要工作已基本完成：数据收集与清洗、LLM提取（全部1{,}331条评论）、可靠性验证（计算准确率100\%、重测信度$r=0.892$）、统计分析（H1--H4全部假设检验）均已完成，当前处于论文撰写和修改阶段。

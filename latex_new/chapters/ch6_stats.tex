@@ -1,0 +1,91 @@
+% ch6_stats.tex — 第六章 数据描述性统计
+\section{数据描述性统计}
+
+\subsection{样本基本情况}
+
+本研究的原始数据来源于亚马逊平台伯特小蜜蜂护手霜套装（ASIN: B004EDYQX6）2012年至2023年间的全部评论，共计1{,}331条。经LLM提取与数据清洗后，各分析样本情况如下：
+
+\begin{itemize}
+  \item \textbf{H1/H2分析样本}：ATT和Rating均完整的记录共1{,}157条（ATT提取成功率86.9\%），构成主分析样本（$N=1{,}157$）。
+  \item \textbf{H3/H4分析样本}：ATT和BI均完整的记录共298条（占总样本22.4\%），构成行为意向子样本（$N=298$）。
+  \item \textbf{评论时间跨度}：2012--2023年，涵盖产品生命周期的不同阶段。
+  \item \textbf{验证购买比例}：90.3\%的评论经亚马逊认证为已验证购买（verified purchase），保障了数据的生态效度。
+\end{itemize}
+
+\subsection{变量描述性统计}
+
+\subsubsection{H1和H2分析样本}
+
+\textbf{评分分布}（H1/H2分析样本，$N=1{,}157$）：5星评论占比72.2\%，4星占12.4\%，3星占5.5\%，2星占3.6\%，1星占6.3\%，呈明显右偏分布，这是在线评论的典型特征，也是H1/H2分析采用有序Logistic回归的原因。
+
+\begin{table}[htbp]
+\centering
+\caption{H1/H2分析描述性统计（$N=1{,}157$）}
+\label{tab:desc_h12}
+\begin{threeparttable}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+变量 & 均值 & 标准差 & 最小值 & 最大值 \\
+\midrule
+ATT（多属性态度指数） & 1.054 & 1.208 & $-$4.0 & 4.6 \\
+Rating（评论评分） & 4.440 & 1.079 & 1 & 5 \\
+Reviewer Experience（评论者经验） & 5.802 & 11.092 & 1 & 193 \\
+review\_length（评论长度，字符数） & 149.161 & 160.234 & 1 & 1{,}489 \\
+helpful\_vote（有用票数） & 0.384 & 2.156 & 0 & 74 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item 注：ATT 取值范围为 $-4.1$ 至 $4.6$；Reviewer Experience 以 Amazon Beauty 品类历史评论总数衡量。
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+评论者经验（Reviewer Experience）按四梯度划分的分布如下：新手（1--2条）占比最高，反映了一次性评论者在电商平台的普遍性；一般（3--10条）、有经验（11--50条）和专家（51条及以上）占比依次递减，符合评论者活跃度的正偏态分布规律。
+
+\textbf{数据完整性}：rating字段100\%完整，ATT完整率86.9\%，满足H1/H2分析需求（$N=1{,}157$）。
+
+\subsubsection{H3和H4分析样本}
+
+\begin{table}[htbp]
+\centering
+\caption{H3/H4分析描述性统计（$N=298$）}
+\label{tab:desc_h34}
+\begin{threeparttable}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+变量 & 均值 & 标准差 & 最小值 & 最大值 \\
+\midrule
+ATT（多属性态度指数） & 1.370 & 1.130 & $-$2.8 & 4.6 \\
+BI（行为意向，0--3量表） & 1.789 & 0.761 & 1 & 3 \\
+Rating（评论评分） & 4.446 & 1.008 & 1 & 5 \\
+review\_length（评论长度，字符数） & 222.909 & 192.144 & 12 & 1{,}489 \\
+helpful\_vote（有用票数） & 0.531 & 2.289 & 0 & 36 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item 注：BI 子样本 ATT 均值（1.370）显著高于 BI 缺失样本（0.944），$t(441)=4.604$，$p<0.001$，存在选择偏差（详见局限性章节）。
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+BI子样本（$N=298$）的ATT均值（1.370）显著高于BI缺失样本（均值0.944），Welch's $t$ 检验：$t(441)=4.604$，$p<0.001$，证实存在选择偏差——态度更积极的评论者更可能在评论中表达行为意向。该选择偏差在局限性章节中详细讨论。
+
+\subsection{数据质量评估}
+
+\subsubsection{数据完整性}
+
+H1/H2分析样本（$N=1{,}157$）的Rating字段来自平台结构化数据，完整率100\%；ATT通过LLM提取，提取成功率86.9\%（$1{,}157/1{,}331$），缺失的13.1\%主要来自评论文本过短（少于10个字符）或LLM输出格式异常的记录，已通过列删除法处理。
+
+\subsubsection{数据真实性}
+
+90.3\%的评论经亚马逊认证为已验证购买，保障了评论内容来源于真实购买和使用体验。verified\_purchase与ATT的相关系数$r=0.032$（$p=\text{ns}$），表明已验证购买状态对ATT提取结果无系统性影响，保留全量数据的决策对分析结果影响可忽略不计。
+
+\subsubsection{样本代表性}
+
+H3/H4分析样本（$N=298$）的BI缺失率77.6\%并非测量失败，而是反映了理论预期：大多数消费者在评论中仅描述使用体验而不表达未来行为意向，"BI缺失"代表"评论者未表达行为意向"，属于理论上有意义的信息缺失，而非随机测量误差。但BI存在组与BI缺失组的ATT均值存在显著差异，构成H3/H4分析的已知局限性。
+
+\subsubsection{LLM提取质量}
+
+LLM提取质量的系统性验证在第五章4.6节已详述，核心指标包括：ATT计算准确率100\%（$N=1{,}087$）、人工验证一致率96.7\%（$207/214$）、$e_i$一致率100\%（$214/214$）、ATT重测信度$r=0.892$（$p<0.001$）。这些指标共同表明，LLM提取的多属性态度数据具有足够的质量用于后续假设检验。

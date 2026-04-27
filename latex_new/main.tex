@@ -1,0 +1,103 @@
+% ============================================================
+% main.tex —— 大连理工大学本科毕业论文主文件
+% 论文题目：基于在线评论的消费者多属性态度预测效度研究
+%           ——大语言模型提取方法与评论者经验的调节作用
+% 编译命令：
+%   xelatex main.tex
+%   biber main
+%   xelatex main.tex
+%   xelatex main.tex
+% ============================================================
+
+\documentclass[
+  12pt,
+  a4paper,
+  UTF8,
+  zihao = -4,        % 全局默认小四号
+  scheme = plain,    % 不自动更改标题格式（由preamble手动设置）
+]{ctexart}
+
+% 加载格式设置
+\input{preamble}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+% ---------- 封面 ----------
+\input{chapters/cover}
+\clearpage
+
+% ---------- 摘要（罗马数字页码）----------
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\input{chapters/abstract}
+\clearpage
+
+% ---------- 目录 ----------
+{
+  \ctexset{section/format = \zihao{-3}\heiti\centering}
+  \hypersetup{hidelinks}
+  \tableofcontents
+  \clearpage
+}
+
+% ---------- 正文（阿拉伯数字页码）----------
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{chapters/ch1_intro}
+\clearpage
+
+\input{chapters/ch2_theory}
+\clearpage
+
+\input{chapters/ch3_literature}
+\clearpage
+
+\input{chapters/ch4_hypotheses}
+\clearpage
+
+\input{chapters/ch5_design}
+\clearpage
+
+\input{chapters/ch6_stats}
+\clearpage
+
+\input{chapters/ch7_results}
+\clearpage
+
+\input{chapters/ch8_discussion}
+\clearpage
+
+\input{chapters/ch9_conclusion}
+\clearpage
+
+% ---------- 参考文献 ----------
+{
+\ctexset{section/format = \zihao{-3}\heiti\centering}
+\zihao{5}
+\printbibliography[
+  title  = {参考文献},
+  heading = bibintoc,
+]
+}
+\clearpage
+
+% ---------- 附录 ----------
+\appendix
+\renewcommand{\thesection}{\Alph{section}}
+{
+\ctexset{section/format = \zihao{-3}\heiti\centering}
+\input{chapters/appendix}
+}
+
+% ---------- 致谢 ----------
+{
+\ctexset{section/format = \zihao{-3}\heiti\centering}
+\input{chapters/acknowledgment}
+}
+
+% ============================================================
+\end{document}
+% ============================================================

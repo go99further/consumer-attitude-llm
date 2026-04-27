@@ -1,0 +1,30 @@
+"""
+API Configuration Template
+
+Copy this file to `config.py` and fill in your own API key.
+The actual `config.py` is gitignored to avoid leaking credentials.
+"""
+
+# ============================================
+# LLM API Configuration
+# ============================================
+
+BASE_URL = "https://api.bianxie.ai/v1"
+
+# Replace with your own API key (starts with sk-)
+API_KEY = "sk-YOUR_API_KEY_HERE"
+
+# ============================================
+# Model Selection
+# ============================================
+# Recommended: deepseek-v3.2 for best cost/performance for extraction tasks
+MODEL = "deepseek-v3.2"
+
+API_PROVIDER = "bianxie"
+
+# ============================================
+# Call Parameters
+# ============================================
+API_TIMEOUT = 30           # seconds
+API_MAX_RETRIES = 3
+API_DELAY = 1.0            # delay between calls (seconds)
