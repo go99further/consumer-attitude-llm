@@ -57,7 +57,7 @@ $$\text{ATT} = \sum_{i=1}^{n} b_i \times e_i$$
 
 <div align="center">
 
-![研究框架与假设检验路径图](https://go99further.github.io/consumer-attitude-llm/latex_new/figures/research_framework_final.png)
+![研究框架与假设检验路径图](https://go99further.github.io/consumer-attitude-llm/latex_new/figures/fig5_1_framework.png)
 
 图 1　研究框架与假设检验路径图
 </div>

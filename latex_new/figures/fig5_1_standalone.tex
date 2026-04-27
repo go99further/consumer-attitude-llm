@@ -1,0 +1,125 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, backgrounds, decorations.pathreplacing}
+\usepackage{xeCJK}
+\usepackage{amsmath}
+
+\setCJKmainfont{SimSun}
+\setCJKsansfont{Microsoft YaHei}
+
+\begin{document}
+\begin{tikzpicture}[
+  line cap  = round,
+  line join = round,
+  varbox/.style = {
+    rectangle, rounded corners = 2pt,
+    draw = black, line width = 0.5pt,
+    fill = white,
+    minimum width  = 3.2cm,
+    minimum height = 1.10cm,
+    align = center,
+    text width     = 2.9cm,
+    inner sep      = 6pt,
+    font = \fontsize{10.5pt}{14pt}\selectfont,
+  },
+  ctrlbox/.style = {
+    varbox,
+    fill = black!7,
+    draw = black!45,
+  },
+  modbox/.style = {
+    rectangle, rounded corners = 2pt,
+    draw = black!55, line width = 0.5pt,
+    fill = black!5,
+    minimum height = 0.78cm,
+    inner sep      = 6pt,
+    align = center,
+    font = \fontsize{10.5pt}{14pt}\selectfont,
+  },
+  hbox/.style = {
+    rectangle, rounded corners = 2pt,
+    draw = black!55, line width = 0.4pt,
+    fill = white,
+    inner sep = 3pt,
+    font = \fontsize{9pt}{12pt}\selectfont,
+  },
+  mainpath/.style = {
+    ->, >= {Stealth[length=5.5pt, width=4pt]},
+    line width = 0.75pt, black,
+  },
+  modpath/.style = {
+    ->, >= {Stealth[length=5pt, width=3.5pt]},
+    line width = 0.5pt, black,
+    dashed, dash pattern = on 5pt off 2.5pt,
+  },
+  ctrlpath/.style = {
+    ->, >= {Stealth[length=4.5pt, width=3.5pt]},
+    line width = 0.5pt, black!50,
+  },
+]
+
+\node[modbox, minimum width = 13.6cm] at (0, 1.30cm)
+  {全样本分析\quad H1 / H2\quad ($N = 1{,}157$)};
+
+\node[varbox] (ATT1) at (-5.0cm, 0) {ATT\\多属性态度};
+\node[varbox] (RAT1) at ( 0,     0) {Rating\\评论评分};
+\node[varbox] (EXP1) at ( 5.0cm, 0) {Reviewer\\Experience};
+
+\draw[mainpath] (ATT1.east) -- (RAT1.west);
+\node[hbox] at (-2.50cm, 0.62cm) {H1};
+
+\draw[modpath]
+  (EXP1.south)
+  -- ( 5.0cm, -0.80cm)
+  -- (-2.50cm, -0.80cm)
+  -- (-2.50cm, -0.08cm);
+\node[hbox] at (1.25cm, -1.12cm) {H2（调节）};
+
+\node[align=center,
+      font=\fontsize{9pt}{13pt}\selectfont,
+      text=black!55]
+  at (0, -1.62cm)
+  {控制变量：review\_length\quad helpful\_vote\quad review\_year};
+
+\draw[black!25, line width=0.4pt, dashed]
+  (-6.8cm, -2.20cm) -- (6.8cm, -2.20cm);
+
+\node[modbox, minimum width = 13.6cm] at (0, -2.90cm)
+  {子样本分析\quad H3 / H4\quad ($N = 298$)};
+
+\node[varbox]  (ATT2) at (-5.0cm, -4.80cm) {ATT\\多属性态度};
+\node[ctrlbox] (RAT2) at ( 0,     -4.80cm) {Rating\\（控制变量）};
+\node[varbox]  (BI2)  at ( 5.0cm, -4.80cm) {BI\\行为意向};
+
+\draw[mainpath]
+  (ATT2.north east) to[out=28, in=152] (BI2.north west);
+\node[hbox] at (0, -3.68cm) {H3（主效应）};
+
+\draw[ctrlpath] (RAT2.east) -- (BI2.west);
+\node[font=\fontsize{9pt}{12pt}\selectfont, text=black!50]
+  at (2.50cm, -4.46cm) {控制};
+
+\draw[modpath]
+  (ATT2.south east) to[out=-28, in=-152] (BI2.south west);
+\node[hbox] at (0, -5.94cm) {H4：$\Delta R^2$ 增量效度};
+
+\def\LY{-7.00cm}
+
+\draw[mainpath] (-3.8cm, \LY) -- (-2.6cm, \LY);
+\node[right, font=\fontsize{9pt}{12pt}\selectfont]
+  at (-2.5cm, \LY) {主效应路径};
+
+\draw[modpath]  ( 1.2cm, \LY) -- ( 2.4cm, \LY);
+\node[right, font=\fontsize{9pt}{12pt}\selectfont]
+  at ( 2.5cm, \LY) {调节效应 / 增量效度路径};
+
+\node[align=center,
+      font=\fontsize{9pt}{13pt}\selectfont,
+      text=black!65,
+      text width=13.0cm]
+  at (0, -7.90cm)
+  {注：ATT 与 Rating 来自独立数据源，不存在同源方差（CMV）问题；\\
+   ATT 与 BI 均来自同一评论文本，存在 CMV 局限（Harman 单因子 = 76.8\%）。};
+
+\end{tikzpicture}
+\end{document}
