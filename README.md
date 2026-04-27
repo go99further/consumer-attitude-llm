@@ -25,7 +25,7 @@ The study validates the **predictive validity** of LLM-extracted attitudes throu
 
 ## 🔬 Research Framework
 
-![Research Framework](latex_new/figures/fig5_1_framework.png)
+![Research Framework](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/latex_new/figures/fig5_1_framework.png)
 
 **Key Design Feature: Three Independent Data Sources**
 
@@ -52,13 +52,13 @@ This design **eliminates Common Method Variance (CMV)** at its root for H1 and H
 
 ### H2: Moderation Effect (Simple Slopes Analysis)
 
-![Moderation Effect](latex_new/figures/fig7_2_moderation.png)
+![Moderation Effect](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/latex_new/figures/fig7_2_moderation.png)
 
 **Finding**: Low-experience reviewers show **stronger ATT–Rating consistency** (slope = 0.741) than high-experience reviewers (slope = 0.573). The interaction term is significant (β = −0.008, *p* = 0.001), suggesting experienced reviewers rely less on multi-attribute decomposition when forming overall ratings.
 
 ### H4: Incremental Validity
 
-![Incremental Validity](latex_new/figures/fig7_3_incremental.png)
+![Incremental Validity](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/latex_new/figures/fig7_3_incremental.png)
 
 **Finding**: After controlling for Rating, ATT still contributes **Δ*R*² = 0.018** (*F* = 8.32, *p* = 0.004) to predicting Behavioral Intention. This demonstrates that multi-attribute decomposition captures information **beyond** simple summary ratings.
 
@@ -159,103 +159,103 @@ The analysis uses **1,331 reviews** of Burt's Bees Hand Cream Gift Set (ASIN: `B
 
 Scroll down to read the complete thesis below. No download or click required.
 
-![Page 1](thesis_pdf/preview_pages/page_01.png)
+![Page 1](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_01.png)
 
-![Page 2](thesis_pdf/preview_pages/page_02.png)
+![Page 2](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_02.png)
 
-![Page 3](thesis_pdf/preview_pages/page_03.png)
+![Page 3](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_03.png)
 
-![Page 4](thesis_pdf/preview_pages/page_04.png)
+![Page 4](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_04.png)
 
-![Page 5](thesis_pdf/preview_pages/page_05.png)
+![Page 5](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_05.png)
 
-![Page 6](thesis_pdf/preview_pages/page_06.png)
+![Page 6](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_06.png)
 
-![Page 7](thesis_pdf/preview_pages/page_07.png)
+![Page 7](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_07.png)
 
-![Page 8](thesis_pdf/preview_pages/page_08.png)
+![Page 8](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_08.png)
 
-![Page 9](thesis_pdf/preview_pages/page_09.png)
+![Page 9](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_09.png)
 
-![Page 10](thesis_pdf/preview_pages/page_10.png)
+![Page 10](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_10.png)
 
-![Page 11](thesis_pdf/preview_pages/page_11.png)
+![Page 11](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_11.png)
 
-![Page 12](thesis_pdf/preview_pages/page_12.png)
+![Page 12](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_12.png)
 
-![Page 13](thesis_pdf/preview_pages/page_13.png)
+![Page 13](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_13.png)
 
-![Page 14](thesis_pdf/preview_pages/page_14.png)
+![Page 14](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_14.png)
 
-![Page 15](thesis_pdf/preview_pages/page_15.png)
+![Page 15](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_15.png)
 
-![Page 16](thesis_pdf/preview_pages/page_16.png)
+![Page 16](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_16.png)
 
-![Page 17](thesis_pdf/preview_pages/page_17.png)
+![Page 17](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_17.png)
 
-![Page 18](thesis_pdf/preview_pages/page_18.png)
+![Page 18](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_18.png)
 
-![Page 19](thesis_pdf/preview_pages/page_19.png)
+![Page 19](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_19.png)
 
-![Page 20](thesis_pdf/preview_pages/page_20.png)
+![Page 20](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_20.png)
 
-![Page 21](thesis_pdf/preview_pages/page_21.png)
+![Page 21](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_21.png)
 
-![Page 22](thesis_pdf/preview_pages/page_22.png)
+![Page 22](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_22.png)
 
-![Page 23](thesis_pdf/preview_pages/page_23.png)
+![Page 23](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_23.png)
 
-![Page 24](thesis_pdf/preview_pages/page_24.png)
+![Page 24](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_24.png)
 
-![Page 25](thesis_pdf/preview_pages/page_25.png)
+![Page 25](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_25.png)
 
-![Page 26](thesis_pdf/preview_pages/page_26.png)
+![Page 26](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_26.png)
 
-![Page 27](thesis_pdf/preview_pages/page_27.png)
+![Page 27](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_27.png)
 
-![Page 28](thesis_pdf/preview_pages/page_28.png)
+![Page 28](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_28.png)
 
-![Page 29](thesis_pdf/preview_pages/page_29.png)
+![Page 29](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_29.png)
 
-![Page 30](thesis_pdf/preview_pages/page_30.png)
+![Page 30](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_30.png)
 
-![Page 31](thesis_pdf/preview_pages/page_31.png)
+![Page 31](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_31.png)
 
-![Page 32](thesis_pdf/preview_pages/page_32.png)
+![Page 32](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_32.png)
 
-![Page 33](thesis_pdf/preview_pages/page_33.png)
+![Page 33](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_33.png)
 
-![Page 34](thesis_pdf/preview_pages/page_34.png)
+![Page 34](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_34.png)
 
-![Page 35](thesis_pdf/preview_pages/page_35.png)
+![Page 35](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_35.png)
 
-![Page 36](thesis_pdf/preview_pages/page_36.png)
+![Page 36](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_36.png)
 
-![Page 37](thesis_pdf/preview_pages/page_37.png)
+![Page 37](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_37.png)
 
-![Page 38](thesis_pdf/preview_pages/page_38.png)
+![Page 38](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_38.png)
 
-![Page 39](thesis_pdf/preview_pages/page_39.png)
+![Page 39](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_39.png)
 
-![Page 40](thesis_pdf/preview_pages/page_40.png)
+![Page 40](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_40.png)
 
-![Page 41](thesis_pdf/preview_pages/page_41.png)
+![Page 41](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_41.png)
 
-![Page 42](thesis_pdf/preview_pages/page_42.png)
+![Page 42](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_42.png)
 
-![Page 43](thesis_pdf/preview_pages/page_43.png)
+![Page 43](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_43.png)
 
-![Page 44](thesis_pdf/preview_pages/page_44.png)
+![Page 44](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_44.png)
 
-![Page 45](thesis_pdf/preview_pages/page_45.png)
+![Page 45](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_45.png)
 
-![Page 46](thesis_pdf/preview_pages/page_46.png)
+![Page 46](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_46.png)
 
-![Page 47](thesis_pdf/preview_pages/page_47.png)
+![Page 47](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_47.png)
 
-![Page 48](thesis_pdf/preview_pages/page_48.png)
+![Page 48](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_48.png)
 
-![Page 49](thesis_pdf/preview_pages/page_49.png)
+![Page 49](https://raw.githubusercontent.com/go99further/consumer-attitude-llm/main/thesis_pdf/preview_pages/page_49.png)
 
 ---
 
